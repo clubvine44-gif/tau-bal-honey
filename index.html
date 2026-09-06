@@ -1,0 +1,1152 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TAU BAL — Высокогорный мёд Кавказа | Кисловодск</title>
+  <meta name="description" content="Натуральный высокогорный мёд TAU BAL. Собран на высоте 1800+ метров из нектара диких горных трав. 100% натуральный, без добавок. Золото, рождённое в горах.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --black: #0D0D0D;
+      --dark: #1B1B1B;
+      --gold: #D4AF37;
+      --gold-light: #E8C96A;
+      --cream: #F5EAD0;
+      --green: #50623B;
+      --green-light: #6B7F4F;
+      --white: #FFFFFF;
+      --text-muted: #A0A0A0;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Montserrat', sans-serif;
+      background: var(--black);
+      color: var(--cream);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    h1, h2, h3, h4 {
+      font-family: 'Playfair Display', serif;
+      font-weight: 600;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+      transition: all 0.3s ease;
+    }
+
+    img {
+      max-width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* Header */
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      background: rgba(13, 13, 13, 0.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(212, 175, 55, 0.15);
+      transition: all 0.3s ease;
+    }
+
+    header.scrolled {
+      background: rgba(13, 13, 13, 0.95);
+      box-shadow: 0 4px 30px rgba(0,0,0,0.4);
+    }
+
+    .header-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 72px;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .logo-svg {
+      width: 42px;
+      height: 42px;
+    }
+
+    .logo-text {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.5rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      color: var(--gold);
+    }
+
+    nav {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+    }
+
+    nav a {
+      font-size: 0.9rem;
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      color: var(--cream);
+      opacity: 0.85;
+    }
+
+    nav a:hover {
+      color: var(--gold);
+      opacity: 1;
+    }
+
+    .header-cta {
+      background: var(--gold);
+      color: var(--black);
+      padding: 10px 22px;
+      border-radius: 50px;
+      font-weight: 600;
+      font-size: 0.85rem;
+      letter-spacing: 0.03em;
+    }
+
+    .header-cta:hover {
+      background: var(--gold-light);
+      transform: translateY(-1px);
+      box-shadow: 0 6px 20px rgba(212, 175, 55, 0.35);
+    }
+
+    .burger {
+      display: none;
+      flex-direction: column;
+      gap: 6px;
+      cursor: pointer;
+      padding: 8px;
+    }
+
+    .burger span {
+      width: 24px;
+      height: 2px;
+      background: var(--gold);
+      transition: all 0.3s;
+    }
+
+    /* Hero */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      position: relative;
+      padding-top: 72px;
+      background: 
+        linear-gradient(135deg, rgba(13,13,13,0.75) 0%, rgba(13,13,13,0.55) 50%, rgba(13,13,13,0.7) 100%),
+        url('https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=1920&q=80') center/cover no-repeat;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at 70% 50%, transparent 0%, rgba(13,13,13,0.4) 70%);
+      pointer-events: none;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 680px;
+      padding: 60px 0;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(212, 175, 55, 0.12);
+      border: 1px solid rgba(212, 175, 55, 0.3);
+      color: var(--gold);
+      padding: 8px 16px;
+      border-radius: 50px;
+      font-size: 0.8rem;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      margin-bottom: 28px;
+    }
+
+    .hero h1 {
+      font-size: clamp(2.8rem, 6vw, 4.2rem);
+      line-height: 1.15;
+      color: var(--cream);
+      margin-bottom: 20px;
+    }
+
+    .hero h1 span {
+      color: var(--gold);
+    }
+
+    .hero-slogan {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.35rem;
+      font-style: italic;
+      color: var(--gold-light);
+      margin-bottom: 28px;
+      opacity: 0.95;
+    }
+
+    .hero-desc {
+      font-size: 1.1rem;
+      color: rgba(245, 234, 208, 0.85);
+      max-width: 520px;
+      margin-bottom: 40px;
+      font-weight: 300;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+      margin-bottom: 48px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 16px 32px;
+      border-radius: 50px;
+      font-weight: 600;
+      font-size: 0.95rem;
+      letter-spacing: 0.03em;
+      transition: all 0.3s ease;
+      border: none;
+      cursor: pointer;
+    }
+
+    .btn-primary {
+      background: var(--gold);
+      color: var(--black);
+    }
+
+    .btn-primary:hover {
+      background: var(--gold-light);
+      transform: translateY(-2px);
+      box-shadow: 0 10px 30px rgba(212, 175, 55, 0.4);
+    }
+
+    .btn-outline {
+      background: transparent;
+      color: var(--cream);
+      border: 1.5px solid rgba(245, 234, 208, 0.4);
+    }
+
+    .btn-outline:hover {
+      border-color: var(--gold);
+      color: var(--gold);
+      background: rgba(212, 175, 55, 0.08);
+    }
+
+    .hero-stats {
+      display: flex;
+      gap: 40px;
+      flex-wrap: wrap;
+    }
+
+    .stat {
+      text-align: left;
+    }
+
+    .stat-value {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.8rem;
+      color: var(--gold);
+      font-weight: 600;
+    }
+
+    .stat-label {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-top: 4px;
+    }
+
+    /* Sections common */
+    section {
+      padding: 100px 0;
+    }
+
+    .section-header {
+      text-align: center;
+      max-width: 700px;
+      margin: 0 auto 60px;
+    }
+
+    .section-label {
+      display: inline-block;
+      color: var(--gold);
+      font-size: 0.85rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      margin-bottom: 16px;
+    }
+
+    .section-title {
+      font-size: clamp(2rem, 4vw, 2.8rem);
+      color: var(--cream);
+      margin-bottom: 20px;
+      line-height: 1.25;
+    }
+
+    .section-desc {
+      font-size: 1.05rem;
+      color: var(--text-muted);
+      font-weight: 300;
+    }
+
+    /* About */
+    .about {
+      background: var(--dark);
+      position: relative;
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
+    }
+
+    .about-image {
+      position: relative;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 30px 60px rgba(0,0,0,0.5);
+    }
+
+    .about-image img {
+      width: 100%;
+      height: 480px;
+      object-fit: cover;
+    }
+
+    .about-image::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border: 1px solid rgba(212, 175, 55, 0.2);
+      border-radius: 16px;
+      pointer-events: none;
+    }
+
+    .about-content h2 {
+      font-size: 2.4rem;
+      margin-bottom: 24px;
+      color: var(--cream);
+    }
+
+    .about-content p {
+      color: rgba(245, 234, 208, 0.8);
+      margin-bottom: 18px;
+      font-size: 1.05rem;
+      font-weight: 300;
+    }
+
+    .about-highlight {
+      background: rgba(212, 175, 55, 0.08);
+      border-left: 3px solid var(--gold);
+      padding: 20px 24px;
+      margin: 32px 0;
+      border-radius: 0 12px 12px 0;
+    }
+
+    .about-highlight p {
+      margin: 0;
+      font-style: italic;
+      color: var(--gold-light);
+      font-family: 'Playfair Display', serif;
+      font-size: 1.15rem;
+    }
+
+    /* Features */
+    .features {
+      background: var(--black);
+    }
+
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 28px;
+    }
+
+    .feature-card {
+      background: var(--dark);
+      border: 1px solid rgba(212, 175, 55, 0.12);
+      border-radius: 16px;
+      padding: 36px 28px;
+      text-align: center;
+      transition: all 0.35s ease;
+    }
+
+    .feature-card:hover {
+      border-color: rgba(212, 175, 55, 0.4);
+      transform: translateY(-6px);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+    }
+
+    .feature-icon {
+      width: 64px;
+      height: 64px;
+      margin: 0 auto 24px;
+      background: rgba(212, 175, 55, 0.1);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.8rem;
+    }
+
+    .feature-card h3 {
+      font-size: 1.25rem;
+      color: var(--cream);
+      margin-bottom: 12px;
+    }
+
+    .feature-card p {
+      font-size: 0.95rem;
+      color: var(--text-muted);
+      font-weight: 300;
+    }
+
+    /* Product */
+    .product {
+      background: linear-gradient(180deg, var(--dark) 0%, var(--black) 100%);
+    }
+
+    .product-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.1fr;
+      gap: 50px;
+      align-items: center;
+    }
+
+    .product-visual {
+      position: relative;
+      text-align: center;
+    }
+
+    .product-jar {
+      max-width: 340px;
+      margin: 0 auto;
+      filter: drop-shadow(0 30px 50px rgba(0,0,0,0.6));
+      border-radius: 12px;
+    }
+
+    .product-info h2 {
+      font-size: 2.4rem;
+      margin-bottom: 16px;
+    }
+
+    .product-info .price-note {
+      color: var(--gold);
+      font-size: 1.1rem;
+      margin-bottom: 24px;
+      font-weight: 500;
+    }
+
+    .product-list {
+      list-style: none;
+      margin: 28px 0;
+    }
+
+    .product-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      margin-bottom: 16px;
+      font-size: 1.05rem;
+      color: rgba(245, 234, 208, 0.9);
+    }
+
+    .product-list li::before {
+      content: '✓';
+      color: var(--gold);
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+
+    /* Values */
+    .values {
+      background: var(--black);
+      padding-bottom: 80px;
+    }
+
+    .values-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+    }
+
+    .value-card {
+      text-align: center;
+      padding: 32px 20px;
+      border-radius: 16px;
+      background: rgba(27, 27, 27, 0.6);
+      border: 1px solid rgba(212, 175, 55, 0.1);
+      transition: all 0.3s;
+    }
+
+    .value-card:hover {
+      border-color: var(--gold);
+      background: rgba(212, 175, 55, 0.05);
+    }
+
+    .value-icon {
+      font-size: 2.2rem;
+      margin-bottom: 16px;
+    }
+
+    .value-card h4 {
+      font-size: 1.15rem;
+      color: var(--gold);
+      margin-bottom: 8px;
+      letter-spacing: 0.04em;
+    }
+
+    .value-card p {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      font-weight: 300;
+    }
+
+    /* Gallery */
+    .gallery {
+      background: var(--dark);
+      padding: 80px 0;
+    }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+    }
+
+    .gallery-item {
+      border-radius: 12px;
+      overflow: hidden;
+      height: 220px;
+      position: relative;
+    }
+
+    .gallery-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+
+    .gallery-item:hover img {
+      transform: scale(1.08);
+    }
+
+    /* CTA / Contact */
+    .contact {
+      background: 
+        linear-gradient(180deg, rgba(13,13,13,0.9) 0%, rgba(13,13,13,0.85) 100%),
+        url('https://images.unsplash.com/photo-1506905925346-21bda4d32df4?auto=format&fit=crop&w=1920&q=80') center/cover no-repeat;
+      position: relative;
+    }
+
+    .contact-box {
+      max-width: 800px;
+      margin: 0 auto;
+      text-align: center;
+      background: rgba(27, 27, 27, 0.85);
+      backdrop-filter: blur(16px);
+      border: 1px solid rgba(212, 175, 55, 0.25);
+      border-radius: 24px;
+      padding: 60px 40px;
+    }
+
+    .contact-box h2 {
+      font-size: 2.4rem;
+      margin-bottom: 16px;
+    }
+
+    .contact-box p {
+      color: var(--text-muted);
+      margin-bottom: 36px;
+      font-size: 1.1rem;
+    }
+
+    .contact-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 16px;
+      margin-bottom: 40px;
+    }
+
+    .btn-wa {
+      background: #25D366;
+      color: white;
+    }
+
+    .btn-wa:hover {
+      background: #2ee374;
+      transform: translateY(-2px);
+      box-shadow: 0 10px 25px rgba(37, 211, 102, 0.35);
+    }
+
+    .btn-tg {
+      background: #2AABEE;
+      color: white;
+    }
+
+    .btn-tg:hover {
+      background: #4dbcf5;
+      transform: translateY(-2px);
+      box-shadow: 0 10px 25px rgba(42, 171, 238, 0.35);
+    }
+
+    .contact-details {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 32px;
+      padding-top: 32px;
+      border-top: 1px solid rgba(212, 175, 55, 0.15);
+    }
+
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--cream);
+      font-size: 1rem;
+    }
+
+    .contact-item span {
+      color: var(--gold);
+    }
+
+    /* Footer */
+    footer {
+      background: var(--black);
+      border-top: 1px solid rgba(212, 175, 55, 0.1);
+      padding: 50px 0 30px;
+    }
+
+    .footer-inner {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      gap: 24px;
+      margin-bottom: 30px;
+    }
+
+    .footer-logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .footer-logo .logo-text {
+      font-size: 1.3rem;
+    }
+
+    .footer-tagline {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      color: var(--text-muted);
+      font-size: 0.95rem;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 28px;
+    }
+
+    .footer-links a {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+
+    .footer-links a:hover {
+      color: var(--gold);
+    }
+
+    .footer-bottom {
+      text-align: center;
+      padding-top: 24px;
+      border-top: 1px solid rgba(255,255,255,0.05);
+      color: var(--text-muted);
+      font-size: 0.85rem;
+    }
+
+    /* Mobile menu */
+    .mobile-nav {
+      display: none;
+      position: fixed;
+      top: 72px;
+      left: 0;
+      right: 0;
+      background: rgba(13,13,13,0.98);
+      backdrop-filter: blur(16px);
+      padding: 24px;
+      flex-direction: column;
+      gap: 20px;
+      border-bottom: 1px solid rgba(212, 175, 55, 0.15);
+      z-index: 999;
+    }
+
+    .mobile-nav.active {
+      display: flex;
+    }
+
+    .mobile-nav a {
+      font-size: 1.1rem;
+      padding: 8px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+    }
+
+    /* Responsive */
+    @media (max-width: 992px) {
+      .about-grid,
+      .product-grid {
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
+
+      .features-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .values-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .gallery-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      nav {
+        display: none;
+      }
+
+      .burger {
+        display: flex;
+      }
+
+      .header-cta {
+        display: none;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .features-grid,
+      .values-grid,
+      .gallery-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-stats {
+        gap: 24px;
+      }
+
+      .contact-box {
+        padding: 40px 24px;
+      }
+
+      .hero-actions {
+        flex-direction: column;
+      }
+
+      .btn {
+        width: 100%;
+      }
+    }
+
+    /* Animations */
+    .fade-up {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+
+    .fade-up.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header id="header">
+    <div class="container header-inner">
+      <a href="#" class="logo">
+        <svg class="logo-svg" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M20 70 L50 25 L80 70" stroke="#D4AF37" stroke-width="3" fill="none"/>
+          <path d="M30 70 L50 40 L70 70" stroke="#D4AF37" stroke-width="2.5" fill="none"/>
+          <path d="M38 70 L50 52 L62 70" stroke="#D4AF37" stroke-width="2" fill="none"/>
+          <polygon points="50,40 65,55 50,70 35,55" stroke="#D4AF37" stroke-width="2" fill="none"/>
+          <circle cx="50" cy="55" r="5" fill="#D4AF37"/>
+          <ellipse cx="40" cy="50" rx="7" ry="3.5" stroke="#D4AF37" stroke-width="1.5" fill="none"/>
+          <ellipse cx="60" cy="50" rx="7" ry="3.5" stroke="#D4AF37" stroke-width="1.5" fill="none"/>
+        </svg>
+        <span class="logo-text">TAU BAL</span>
+      </a>
+      <nav>
+        <a href="#about">О бренде</a>
+        <a href="#features">Преимущества</a>
+        <a href="#product">Продукт</a>
+        <a href="#values">Ценности</a>
+        <a href="#contact">Контакты</a>
+      </nav>
+      <a href="https://wa.me/79269344513" target="_blank" class="header-cta">Заказать</a>
+      <div class="burger" id="burger">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </div>
+  </header>
+
+  <div class="mobile-nav" id="mobileNav">
+    <a href="#about" onclick="closeMobile()">О бренде</a>
+    <a href="#features" onclick="closeMobile()">Преимущества</a>
+    <a href="#product" onclick="closeMobile()">Продукт</a>
+    <a href="#values" onclick="closeMobile()">Ценности</a>
+    <a href="#contact" onclick="closeMobile()">Контакты</a>
+    <a href="https://wa.me/79269344513" target="_blank" class="btn btn-primary" style="margin-top:12px">Заказать в WhatsApp</a>
+  </div>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="container">
+      <div class="hero-content fade-up">
+        <div class="hero-badge">
+          <span>🏔</span> Высокогорный мёд Кавказа
+        </div>
+        <h1>TAU BAL — <span>золото,</span><br>рождённое в горах</h1>
+        <p class="hero-slogan">Там, где заканчиваются дороги,<br>начинается настоящий мёд.</p>
+        <p class="hero-desc">
+          Чистый нектар диких горных трав, собранный пчёлами на высоте более 1800 метров. 
+          Натуральный, честный и по-настоящему живой мёд из Кисловодска.
+        </p>
+        <div class="hero-actions">
+          <a href="https://wa.me/79269344513?text=Здравствуйте!%20Хочу%20заказать%20мёд%20TAU%20BAL" target="_blank" class="btn btn-primary">
+            Заказать в WhatsApp
+          </a>
+          <a href="#product" class="btn btn-outline">Узнать больше</a>
+        </div>
+        <div class="hero-stats">
+          <div class="stat">
+            <div class="stat-value">1800+</div>
+            <div class="stat-label">метров высота</div>
+          </div>
+          <div class="stat">
+            <div class="stat-value">100%</div>
+            <div class="stat-label">натуральный</div>
+          </div>
+          <div class="stat">
+            <div class="stat-value">0</div>
+            <div class="stat-label">добавок</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- About -->
+  <section class="about" id="about">
+    <div class="container">
+      <div class="about-grid">
+        <div class="about-image fade-up">
+          <img src="https://images.unsplash.com/photo-1587049352846-4a222e784d38?auto=format&fit=crop&w=800&q=80" alt="Банка мёда TAU BAL">
+        </div>
+        <div class="about-content fade-up">
+          <span class="section-label">О бренде</span>
+          <h2>Символ дикой природы Кавказа</h2>
+          <p>
+            TAU BAL — это не просто сладость. Это энергия гор, собранная пчёлами 
+            в высокогорных лугах. Натуральный, честный и по-настоящему живой мёд.
+          </p>
+          <p>
+            Мы создаём мёд, который сохраняет силу горной природы и тепло солнца. 
+            Каждая банка TAU BAL — это труд пчёл, чистый воздух, цветущие луга 
+            и традиции кавказских пасечников.
+          </p>
+          <div class="about-highlight">
+            <p>«Высокогорный мёд — это чистый нектар диких цветов и трав Кавказа, 
+            собранный вдали от городов и загрязнений.»</p>
+          </div>
+          <p>
+            Город Кисловодск. Место, где горы встречаются с чистым воздухом, 
+            а традиции пчеловодства передаются из поколения в поколение.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features -->
+  <section class="features" id="features">
+    <div class="container">
+      <div class="section-header fade-up">
+        <span class="section-label">Почему TAU BAL</span>
+        <h2 class="section-title">Преимущества, которые чувствуешь</h2>
+        <p class="section-desc">Каждая деталь имеет значение — от высоты сбора до чистоты нектара</p>
+      </div>
+      <div class="features-grid">
+        <div class="feature-card fade-up">
+          <div class="feature-icon">⛰</div>
+          <h3>Собран на высоте 1800+</h3>
+          <p>Пчёлы работают в экологически чистых высокогорных районах Кавказа, вдали от городов и загрязнений.</p>
+        </div>
+        <div class="feature-card fade-up">
+          <div class="feature-icon">🌿</div>
+          <h3>Нектар диких трав</h3>
+          <p>Только дикие горные травы и цветы. Никаких культурных посадок — только сила дикой природы.</p>
+        </div>
+        <div class="feature-card fade-up">
+          <div class="feature-icon">✨</div>
+          <h3>100% натуральный</h3>
+          <p>Без сахара, без добавок, без пастеризации. Только природа и пчёлы. Честный состав.</p>
+        </div>
+        <div class="feature-card fade-up">
+          <div class="feature-icon">🍯</div>
+          <h3>Насыщенный вкус</h3>
+          <p>Глубокий, богатый аромат и вкус, который невозможно спутать с обычным магазинным мёдом.</p>
+        </div>
+        <div class="feature-card fade-up">
+          <div class="feature-icon">👨‍👩‍👧‍👦</div>
+          <h3>Для всей семьи</h3>
+          <p>Подходит и взрослым, и детям. Натуральный источник энергии, витаминов и полезных веществ.</p>
+        </div>
+        <div class="feature-card fade-up">
+          <div class="feature-icon">🚚</div>
+          <h3>Доставка по России</h3>
+          <p>Отправляем СДЭК, Почтой России и Boxberry. Самовывоз по договорённости в Кисловодске.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Product -->
+  <section class="product" id="product">
+    <div class="container">
+      <div class="product-grid">
+        <div class="product-visual fade-up">
+          <img class="product-jar" src="https://images.unsplash.com/photo-1587049352846-4a222e784d38?auto=format&fit=crop&w=600&q=80" alt="Мёд TAU BAL">
+        </div>
+        <div class="product-info fade-up">
+          <span class="section-label">Продукт</span>
+          <h2>Высокогорный мёд TAU BAL</h2>
+          <p class="price-note">Натуральный мёд из Кавказа · Кисловодск</p>
+          <p style="color: rgba(245,234,208,0.8); margin-bottom: 8px;">
+            Чистый, насыщенный, ароматный. Собран пчёлами с цветущих лугов на высоте более 1800 метров.
+          </p>
+          <ul class="product-list">
+            <li>Собран на высоте более 1800 метров</li>
+            <li>Нектар диких горных трав и цветов</li>
+            <li>100% натуральный, без добавок</li>
+            <li>Насыщенный вкус и потрясающий аромат</li>
+            <li>Подходит для всей семьи</li>
+          </ul>
+          <div class="hero-actions" style="margin-top: 32px;">
+            <a href="https://wa.me/79269344513?text=Здравствуйте!%20Интересует%20мёд%20TAU%20BAL.%20Подскажите%20вес%20и%20цену." target="_blank" class="btn btn-primary">
+              Уточнить вес и цену
+            </a>
+            <a href="https://t.me/+79269344513" target="_blank" class="btn btn-outline">
+              Написать в Telegram
+            </a>
+          </div>
+          <p style="margin-top: 20px; font-size: 0.9rem; color: var(--text-muted);">
+            Вес уточняйте в сообщениях · Цена по запросу · Доставка по всей России
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Values -->
+  <section class="values" id="values">
+    <div class="container">
+      <div class="section-header fade-up">
+        <span class="section-label">Наши ценности</span>
+        <h2 class="section-title">То, во что мы верим</h2>
+      </div>
+      <div class="values-grid">
+        <div class="value-card fade-up">
+          <div class="value-icon">🐝</div>
+          <h4>Честность</h4>
+          <p>Только правда о продукте. Никаких преувеличений и скрытых добавок.</p>
+        </div>
+        <div class="value-card fade-up">
+          <div class="value-icon">🍃</div>
+          <h4>Натуральность</h4>
+          <p>Всё, что даёт природа. Без химии, без сахара, без лишнего.</p>
+        </div>
+        <div class="value-card fade-up">
+          <div class="value-icon">🏔</div>
+          <h4>Чистота</h4>
+          <p>Высокогорье — это чистый воздух, чистая вода и чистый нектар.</p>
+        </div>
+        <div class="value-card fade-up">
+          <div class="value-icon">💛</div>
+          <h4>Забота</h4>
+          <p>О пчёлах, о природе и о тех, кто выбирает наш мёд для своей семьи.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Gallery -->
+  <section class="gallery">
+    <div class="container">
+      <div class="section-header fade-up">
+        <span class="section-label">Кавказ</span>
+        <h2 class="section-title">Где рождается мёд</h2>
+      </div>
+      <div class="gallery-grid">
+        <div class="gallery-item fade-up">
+          <img src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=600&q=80" alt="Горы Кавказа">
+        </div>
+        <div class="gallery-item fade-up">
+          <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?auto=format&fit=crop&w=600&q=80" alt="Горные луга">
+        </div>
+        <div class="gallery-item fade-up">
+          <img src="https://images.unsplash.com/photo-1558642452-9d2a7deb7f62?auto=format&fit=crop&w=600&q=80" alt="Пчёлы">
+        </div>
+        <div class="gallery-item fade-up">
+          <img src="https://images.unsplash.com/photo-1471943311424-646960669eb4?auto=format&fit=crop&w=600&q=80" alt="Цветы на лугах">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section class="contact" id="contact">
+    <div class="container">
+      <div class="contact-box fade-up">
+        <span class="section-label">Связаться с нами</span>
+        <h2>Готовы попробовать настоящий мёд?</h2>
+        <p>
+          Напишите нам — с радостью подберём объём, ответим на вопросы 
+          и поможем оформить заказ. Отвечаем быстро!
+        </p>
+        <div class="contact-buttons">
+          <a href="https://wa.me/79269344513?text=Здравствуйте!%20Хочу%20заказать%20мёд%20TAU%20BAL" target="_blank" class="btn btn-wa">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.435 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            WhatsApp
+          </a>
+          <a href="https://t.me/+79269344513" target="_blank" class="btn btn-tg">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.788.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 7.001-3.014 3.332-1.386 4.025-1.624 4.476-1.635z"/></svg>
+            Telegram
+          </a>
+          <a href="tel:+79269344513" class="btn btn-outline">
+            📞 Позвонить
+          </a>
+        </div>
+        <div class="contact-details">
+          <div class="contact-item">
+            <span>📱</span> +7 (926) 934-45-13
+          </div>
+          <div class="contact-item">
+            <span>📍</span> Кисловодск, Кавказ
+          </div>
+          <div class="contact-item">
+            <span>🚚</span> Доставка по России
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="footer-inner">
+        <div class="footer-logo">
+          <span class="logo-text">TAU BAL</span>
+          <span class="footer-tagline">Золото, рождённое в горах</span>
+        </div>
+        <div class="footer-links">
+          <a href="#about">О бренде</a>
+          <a href="#product">Продукт</a>
+          <a href="#contact">Контакты</a>
+          <a href="https://wa.me/79269344513" target="_blank">WhatsApp</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2026 TAU BAL · Высокогорный мёд Кавказа · Кисловодск</p>
+        <p style="margin-top: 8px; font-style: italic;">Там, где заканчиваются дороги, начинается настоящий мёд.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Header scroll
+    const header = document.getElementById('header');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 40) {
+        header.classList.add('scrolled');
+      } else {
+        header.classList.remove('scrolled');
+      }
+    });
+
+    // Mobile menu
+    const burger = document.getElementById('burger');
+    const mobileNav = document.getElementById('mobileNav');
+    burger.addEventListener('click', () => {
+      mobileNav.classList.toggle('active');
+    });
+    function closeMobile() {
+      mobileNav.classList.remove('active');
+    }
+
+    // Fade up animation
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.12 });
+
+    document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+  </script>
+</body>
+</html>
