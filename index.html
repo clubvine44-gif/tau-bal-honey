@@ -4,521 +4,292 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <title>TAU BAL — Высокогорный мёд Кавказа</title>
-  <meta name="description" content="Натуральный высокогорный мёд у подножья Эльбруса. Нектар диких трав. Без добавок. Кисловодск.">
-  <meta name="theme-color" content="#0a0a0a">
+  <meta name="description" content="Натуральный высокогорный мёд у подножья Эльбруса. Кисловодск. Без добавок.">
+  <meta name="theme-color" content="#0c0b0a">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Geist:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Manrope:wght@400;500;600&display=swap" rel="stylesheet">
   <style>
     :root {
       --bg: #0c0b0a;
-      --paper: #f2ebe0;
-      --ink: #e8dfd0;
-      --mute: #8a8173;
-      --gold: #b8952c;
-      --line: rgba(232, 223, 208, 0.12);
-      --serif: "Instrument Serif", Georgia, serif;
-      --sans: "Geist", system-ui, sans-serif;
+      --card: #151311;
+      --text: #f0e8da;
+      --muted: #9a9080;
+      --gold: #c4a035;
+      --line: rgba(240,232,218,.12);
     }
     * { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: smooth; }
     body {
-      font-family: var(--sans);
+      font-family: Manrope, system-ui, sans-serif;
       background: var(--bg);
-      color: var(--ink);
+      color: var(--text);
       line-height: 1.55;
       -webkit-font-smoothing: antialiased;
-      overflow-x: hidden;
     }
     a { color: inherit; text-decoration: none; }
-    img, video { display: block; max-width: 100%; }
-    button { font: inherit; border: 0; background: none; color: inherit; cursor: pointer; }
+    img { display: block; max-width: 100%; }
+    h1, h2, h3 { font-family: "Cormorant Garamond", Georgia, serif; font-weight: 500; line-height: 1.15; }
 
-    #intro {
-      position: fixed; inset: 0; z-index: 2000;
-      background: #000;
-      display: flex; align-items: center; justify-content: center;
-      transition: opacity .9s ease, visibility .9s ease;
-    }
-    #intro.is-done {
-      opacity: 0; visibility: hidden; pointer-events: none;
-    }
-    #intro video {
-      width: 100%; height: 100%;
-      object-fit: cover;
-    }
-    .intro-ui {
-      position: absolute; inset: 0;
-      display: flex; flex-direction: column;
-      justify-content: space-between;
-      padding: 28px 22px calc(28px + env(safe-area-inset-bottom));
-      background: linear-gradient(to bottom, rgba(0,0,0,.35) 0%, transparent 28%, transparent 68%, rgba(0,0,0,.55) 100%);
-      pointer-events: none;
-    }
-    .intro-brand {
-      font-family: var(--serif);
-      letter-spacing: .28em;
-      font-size: 13px;
-      color: var(--paper);
-      opacity: .85;
-    }
-    .intro-bottom {
-      display: flex; align-items: flex-end; justify-content: space-between; gap: 16px;
-      pointer-events: auto;
-    }
-    .intro-line {
-      font-family: var(--serif);
-      font-style: italic;
-      font-size: clamp(1.35rem, 4.5vw, 2rem);
-      color: var(--paper);
-      max-width: 14ch;
-      line-height: 1.2;
-    }
-    .intro-skip {
-      border: 1px solid rgba(242,235,224,.35);
-      padding: 12px 18px;
-      border-radius: 999px;
-      font-size: 12px;
-      letter-spacing: .08em;
-      text-transform: uppercase;
-      color: var(--paper);
-      backdrop-filter: blur(8px);
-      background: rgba(0,0,0,.25);
-      white-space: nowrap;
-    }
-    .intro-progress {
-      position: absolute; left: 0; right: 0; bottom: 0; height: 2px;
-      background: rgba(255,255,255,.15);
-    }
-    .intro-progress > i {
-      display: block; height: 100%; width: 0%;
-      background: var(--gold);
-      transition: width .1s linear;
-    }
-
-    .site { opacity: 0; transition: opacity .8s ease .15s; }
-    .site.is-on { opacity: 1; }
-
-    header {
-      position: fixed; top: 0; left: 0; right: 0; z-index: 50;
+    .top {
+      position: sticky; top: 0; z-index: 20;
       display: flex; align-items: center; justify-content: space-between;
-      padding: 18px 20px;
-      background: linear-gradient(to bottom, rgba(12,11,10,.85), transparent);
+      padding: 14px 18px;
+      background: rgba(12,11,10,.92);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--line);
     }
-    .logo {
-      font-family: var(--serif);
-      font-size: 1.35rem;
-      letter-spacing: .18em;
+    .brand {
+      font-family: "Cormorant Garamond", serif;
+      letter-spacing: .2em;
+      font-size: 1.25rem;
       color: var(--gold);
     }
-    .header-cta {
-      font-size: 12px;
-      letter-spacing: .06em;
-      text-transform: uppercase;
+    .top-btn {
+      background: var(--gold);
+      color: #1a1406;
+      font-weight: 600;
+      font-size: 13px;
       padding: 10px 14px;
-      border: 1px solid rgba(184,149,44,.45);
-      color: var(--gold);
-      border-radius: 999px;
+      border-radius: 8px;
     }
 
-    .hero {
-      min-height: 100svh;
-      position: relative;
-      display: grid;
-      align-items: end;
-      padding: 100px 20px 48px;
+    .hero { padding: 28px 18px 40px; }
+    .hero-pic {
+      border-radius: 16px;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      margin-bottom: 22px;
+      aspect-ratio: 4/5;
+      background: #1a1714;
     }
-    .hero-media { position: absolute; inset: 0; }
-    .hero-media video { width: 100%; height: 100%; object-fit: cover; }
-    .hero-shade {
-      position: absolute; inset: 0;
-      background:
-        linear-gradient(120deg, rgba(12,11,10,.78) 0%, rgba(12,11,10,.35) 48%, rgba(12,11,10,.55) 100%),
-        linear-gradient(to top, rgba(12,11,10,.95) 0%, transparent 42%);
-    }
-    .hero-copy { position: relative; z-index: 1; max-width: 34rem; }
-    .eyebrow {
-      font-size: 11px;
-      letter-spacing: .2em;
+    .hero-pic img { width: 100%; height: 100%; object-fit: cover; }
+    .label {
+      font-size: 12px;
+      letter-spacing: .14em;
       text-transform: uppercase;
       color: var(--gold);
-      margin-bottom: 14px;
+      margin-bottom: 10px;
     }
     h1 {
-      font-family: var(--serif);
-      font-weight: 400;
-      font-size: clamp(2.6rem, 9vw, 4.4rem);
-      line-height: 1.02;
-      color: var(--paper);
+      font-size: clamp(2.2rem, 8vw, 3.4rem);
+      margin-bottom: 12px;
     }
-    h1 em { font-style: italic; color: var(--gold); }
-    .hero-lead {
-      margin-top: 18px;
-      font-size: 1.05rem;
-      color: rgba(232,223,208,.78);
-      max-width: 28rem;
-      font-weight: 300;
+    h1 span { color: var(--gold); font-style: italic; }
+    .lead {
+      color: var(--muted);
+      font-size: 1.02rem;
+      margin-bottom: 22px;
+      max-width: 32rem;
     }
-    .hero-actions {
-      margin-top: 28px;
-      display: flex; flex-wrap: wrap; gap: 10px;
+    .actions {
+      display: flex; flex-direction: column; gap: 10px;
+    }
+    @media (min-width: 520px) {
+      .actions { flex-direction: row; }
     }
     .btn {
       display: inline-flex; align-items: center; justify-content: center;
-      min-height: 48px; padding: 0 20px;
-      border-radius: 999px;
-      font-size: 14px; font-weight: 500;
+      min-height: 50px; padding: 0 18px;
+      border-radius: 10px; font-weight: 600; font-size: 15px;
     }
-    .btn-gold { background: var(--gold); color: #1a1408; }
-    .btn-ghost {
-      border: 1px solid rgba(232,223,208,.28);
-      color: var(--paper);
+    .btn-main { background: var(--gold); color: #1a1406; }
+    .btn-line {
+      border: 1px solid rgba(240,232,218,.28);
+      color: var(--text);
     }
+    .btn-wa { background: #25d366; color: #053b1a; }
+    .btn-tg { background: #2aabee; color: #04263a; }
 
-    section { padding: 72px 20px; }
-    .wrap { max-width: 1080px; margin: 0 auto; }
-    .sec-kicker {
-      font-size: 11px; letter-spacing: .18em; text-transform: uppercase;
-      color: var(--gold); margin-bottom: 10px;
-    }
-    h2 {
-      font-family: var(--serif);
-      font-weight: 400;
-      font-size: clamp(1.9rem, 5vw, 2.8rem);
-      line-height: 1.12;
-      color: var(--paper);
-    }
-
-    .product { background: #12100e; }
-    .product-layout { display: grid; gap: 28px; }
-    @media (min-width: 860px) {
-      .product-layout { grid-template-columns: 1.05fr .95fr; align-items: center; gap: 48px; }
-    }
-    .product-shot {
-      border-radius: 18px;
-      overflow: hidden;
-      border: 1px solid var(--line);
-      transform: rotate(-1.2deg);
-    }
-    .product-shot img { width: 100%; height: auto; aspect-ratio: 4/5; object-fit: cover; }
-    .product-body h3 {
-      font-family: var(--serif);
-      font-size: 1.7rem;
-      margin: 8px 0 6px;
-      color: var(--paper);
-    }
-    .product-meta { color: var(--gold); font-size: 14px; margin-bottom: 18px; }
-    .checks { list-style: none; display: grid; gap: 10px; margin-bottom: 22px; }
-    .checks li {
-      display: grid; grid-template-columns: 18px 1fr; gap: 10px;
-      color: rgba(232,223,208,.88); font-size: 15px; font-weight: 300;
-    }
-    .checks li::before {
-      content: "";
-      width: 7px; height: 7px; margin-top: 7px;
-      border-radius: 50%; background: var(--gold);
-    }
-    .note {
-      border-left: 2px solid var(--gold);
-      padding: 10px 0 10px 14px;
-      margin-bottom: 20px;
-      color: var(--mute);
-      font-size: 14px;
-    }
-
-    .story { background: var(--bg); }
-    .story-grid { display: grid; gap: 28px; }
-    @media (min-width: 860px) {
-      .story-grid { grid-template-columns: .9fr 1.1fr; gap: 56px; align-items: center; }
-    }
-    .story-photo {
-      border-radius: 4px 28px 4px 28px;
-      overflow: hidden;
-      border: 1px solid var(--line);
-    }
-    .story-photo img { width: 100%; height: 320px; object-fit: cover; }
-    @media (min-width: 860px) {
-      .story-photo img { height: 420px; }
-    }
-    .story p {
-      margin-top: 16px;
-      color: rgba(232,223,208,.8);
-      font-weight: 300;
-      font-size: 1.02rem;
-    }
-    .quote {
-      margin-top: 22px;
-      font-family: var(--serif);
-      font-style: italic;
-      font-size: 1.35rem;
-      color: var(--gold);
-      line-height: 1.3;
-    }
-
-    .why { background: #12100e; }
-    .why-list {
-      margin-top: 28px;
-      display: grid;
-      gap: 1px;
-      background: var(--line);
+    section { padding: 36px 18px; }
+    .block { max-width: 720px; margin: 0 auto; }
+    h2 { font-size: clamp(1.7rem, 5vw, 2.3rem); margin-bottom: 14px; }
+    .card {
+      background: var(--card);
       border: 1px solid var(--line);
       border-radius: 16px;
       overflow: hidden;
     }
-    @media (min-width: 700px) {
-      .why-list { grid-template-columns: 1fr 1fr; }
+    .card img { width: 100%; aspect-ratio: 1; object-fit: cover; }
+    .card-body { padding: 20px; }
+    .list { list-style: none; margin: 14px 0 18px; }
+    .list li {
+      padding: 8px 0;
+      border-bottom: 1px solid var(--line);
+      color: rgba(240,232,218,.9);
+      font-size: 15px;
     }
-    .why-item {
-      background: #16130f;
-      padding: 22px 20px;
-    }
-    .why-item strong {
-      display: block;
-      font-family: var(--serif);
+    .list li:last-child { border-bottom: 0; }
+
+    .muted { color: var(--muted); }
+    .quote {
+      margin: 18px 0;
+      padding-left: 14px;
+      border-left: 2px solid var(--gold);
+      font-family: "Cormorant Garamond", serif;
+      font-style: italic;
       font-size: 1.25rem;
-      font-weight: 400;
-      margin-bottom: 6px;
-      color: var(--paper);
-    }
-    .why-item span { color: var(--mute); font-size: 14px; font-weight: 300; }
-
-    .gallery {
-      display: grid;
-      grid-template-columns: 1.2fr .8fr;
-      grid-template-rows: 180px 180px;
-      gap: 10px;
-      margin-top: 28px;
-    }
-    .gallery img {
-      width: 100%; height: 100%; object-fit: cover;
-      border-radius: 12px; border: 1px solid var(--line);
-    }
-    .gallery img:first-child { grid-row: 1 / span 2; border-radius: 12px 40px 12px 12px; }
-    @media (min-width: 800px) {
-      .gallery { grid-template-rows: 220px 220px; }
+      color: var(--gold);
     }
 
-    .order {
-      background: var(--bg);
-      padding-bottom: 110px;
-    }
-    .order-card {
-      border: 1px solid var(--line);
-      border-radius: 24px;
-      padding: 36px 22px;
-      text-align: left;
-      background:
-        radial-gradient(ellipse at top right, rgba(184,149,44,.12), transparent 55%),
-        #12100e;
-    }
-    .order-card p { margin-top: 12px; color: var(--mute); font-weight: 300; }
-    .order-btns {
-      margin-top: 26px;
-      display: grid; gap: 10px;
-    }
+    .grid2 { display: grid; gap: 10px; }
     @media (min-width: 640px) {
-      .order-btns { grid-template-columns: 1fr 1fr 1fr; }
-      .order-card { padding: 44px; }
+      .grid2 { grid-template-columns: 1fr 1fr; }
     }
-    .btn-wa { background: #25d366; color: #053b1a; font-weight: 600; }
-    .btn-tg { background: #2aabee; color: #04263a; font-weight: 600; }
-    .contacts {
-      margin-top: 22px;
-      display: flex; flex-wrap: wrap; gap: 14px 22px;
-      font-size: 14px; color: rgba(232,223,208,.85);
+    .chip {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      padding: 16px;
+    }
+    .chip strong {
+      display: block;
+      font-family: "Cormorant Garamond", serif;
+      font-size: 1.2rem;
+      margin-bottom: 4px;
+    }
+    .chip span { color: var(--muted); font-size: 14px; }
+
+    .order-box {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      padding: 24px 18px;
+    }
+    .order-box .actions { margin-top: 18px; }
+    .phone {
+      margin-top: 16px;
+      font-size: 15px;
+      color: var(--muted);
     }
 
     footer {
-      border-top: 1px solid var(--line);
-      padding: 28px 20px 100px;
       text-align: center;
+      padding: 28px 18px 90px;
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+      font-size: 13px;
     }
-    footer .logo { margin-bottom: 6px; }
-    footer p { color: var(--mute); font-size: 13px; }
+    footer .brand { margin-bottom: 6px; }
 
     .dock {
-      position: fixed; left: 12px; right: 12px; bottom: 12px; z-index: 60;
+      position: fixed; left: 10px; right: 10px; bottom: 10px;
       display: grid; grid-template-columns: 1fr 1fr; gap: 8px;
       padding: 8px;
-      border-radius: 18px;
-      background: rgba(12,11,10,.88);
+      background: rgba(12,11,10,.94);
       border: 1px solid var(--line);
-      backdrop-filter: blur(14px);
+      border-radius: 14px;
+      backdrop-filter: blur(12px);
+      z-index: 30;
     }
-    .dock .btn { min-height: 46px; border-radius: 12px; }
-    @media (min-width: 860px) {
+    @media (min-width: 800px) {
       .dock { display: none; }
       footer { padding-bottom: 40px; }
-      .order { padding-bottom: 72px; }
+      .hero {
+        display: grid;
+        grid-template-columns: 1fr 1.1fr;
+        gap: 40px;
+        align-items: center;
+        max-width: 1000px;
+        margin: 0 auto;
+        padding: 48px 24px;
+      }
+      .hero-pic { margin: 0; aspect-ratio: 4/5; }
     }
   </style>
 </head>
 <body>
-  <div id="intro" aria-hidden="false">
-    <video id="introVideo" playsinline muted autoplay>
-      <source src="assets/intro-web.mp4" type="video/mp4">
-    </video>
-    <div class="intro-ui">
-      <div class="intro-brand">TAU BAL</div>
-      <div class="intro-bottom">
-        <p class="intro-line">Золото,<br>рождённое в горах</p>
-        <button type="button" class="intro-skip" id="skipIntro">Пропустить</button>
-      </div>
-      <div class="intro-progress"><i id="introBar"></i></div>
+  <header class="top">
+    <div class="brand">TAU BAL</div>
+    <a class="top-btn" href="https://wa.me/79269344513?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5!%20%D0%A5%D0%BE%D1%87%D1%83%20%D0%B7%D0%B0%D0%BA%D0%B0%D0%B7%D0%B0%D1%82%D1%8C%20%D0%BC%D1%91%D0%B4%20TAU%20BAL" target="_blank" rel="noopener">Заказать</a>
+  </header>
+
+  <section class="hero">
+    <div class="hero-pic">
+      <img src="https://images.unsplash.com/photo-1587049352846-4a222e784d38?auto=format&fit=crop&w=900&q=80" alt="Мёд TAU BAL" width="900" height="1125">
     </div>
-  </div>
-
-  <div class="site" id="site">
-    <header>
-      <a href="#top" class="logo">TAU BAL</a>
-      <a class="header-cta" href="https://wa.me/79269344513?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5!%20%D0%A5%D0%BE%D1%87%D1%83%20%D0%B7%D0%B0%D0%BA%D0%B0%D0%B7%D0%B0%D1%82%D1%8C%20%D0%BC%D1%91%D0%B4%20TAU%20BAL" target="_blank" rel="noopener">Заказать</a>
-    </header>
-
-    <section class="hero" id="top">
-      <div class="hero-media">
-        <video autoplay muted loop playsinline poster="assets/5.jpg">
-          <source src="assets/video-web.mp4" type="video/mp4">
-        </video>
-        <div class="hero-shade"></div>
+    <div>
+      <p class="label">Кисловодск · Кавказ · 1800+ м</p>
+      <h1>Настоящий мёд<br>с <span>высоты гор</span></h1>
+      <p class="lead">Нектар диких трав у подножья Эльбруса. Без сахара и добавок — только то, что собрали пчёлы.</p>
+      <div class="actions">
+        <a class="btn btn-main" href="https://wa.me/79269344513?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5!%20%D0%A5%D0%BE%D1%87%D1%83%20%D0%B7%D0%B0%D0%BA%D0%B0%D0%B7%D0%B0%D1%82%D1%8C%20%D0%BC%D1%91%D0%B4%20TAU%20BAL" target="_blank" rel="noopener">Написать в WhatsApp</a>
+        <a class="btn btn-line" href="#product">Смотреть продукт</a>
       </div>
-      <div class="hero-copy">
-        <p class="eyebrow">Кавказ · 1800+ метров · Кисловодск</p>
-        <h1>Настоящий мёд<br>с <em>высоты гор</em></h1>
-        <p class="hero-lead">Нектар диких трав у подножья Эльбруса. Без сахара, без добавок — только то, что собрали пчёлы.</p>
-        <div class="hero-actions">
-          <a class="btn btn-gold" href="https://wa.me/79269344513?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5!%20%D0%A5%D0%BE%D1%87%D1%83%20%D0%B7%D0%B0%D0%BA%D0%B0%D0%B7%D0%B0%D1%82%D1%8C%20%D0%BC%D1%91%D0%B4%20TAU%20BAL" target="_blank" rel="noopener">Написать в WhatsApp</a>
-          <a class="btn btn-ghost" href="#product">Смотреть мёд</a>
-        </div>
-      </div>
-    </section>
+    </div>
+  </section>
 
-    <section class="product" id="product">
-      <div class="wrap product-layout">
-        <div class="product-shot">
-          <img src="assets/2.jpg" alt="Банка мёда TAU BAL" loading="lazy">
-        </div>
-        <div class="product-body">
-          <p class="sec-kicker">Продукт</p>
-          <h2>Мёд диких<br>горных трав</h2>
-          <p class="product-meta">Собран на высоте 1800+ м</p>
-          <ul class="checks">
+  <section id="product" style="background:#12100e">
+    <div class="block">
+      <p class="label">Продукт</p>
+      <h2>Мёд диких горных трав</h2>
+      <div class="card" style="margin-top:16px">
+        <img src="https://images.unsplash.com/photo-1558642452-9d2a7deb7f62?auto=format&fit=crop&w=900&q=80" alt="Банка мёда">
+        <div class="card-body">
+          <p class="muted" style="margin-bottom:8px">Собран на высоте 1800+ метров</p>
+          <ul class="list">
             <li>Нектар диких кавказских трав и цветов</li>
-            <li>100% натуральный состав</li>
-            <li>Чистый вкус без «магазинной» сладости</li>
-            <li>От пасечника, а не с конвейера</li>
+            <li>100% натуральный — без добавок</li>
+            <li>От пасечника, не с конвейера</li>
+            <li>Доставка по России</li>
           </ul>
-          <p class="note">Вес и цену уточняйте в переписке — подберём удобный объём.</p>
-          <div class="hero-actions">
-            <a class="btn btn-gold" href="https://wa.me/79269344513?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5!%20%D0%98%D0%BD%D1%82%D0%B5%D1%80%D0%B5%D1%81%D1%83%D0%B5%D1%82%20%D0%BC%D1%91%D0%B4%20TAU%20BAL.%20%D0%9F%D0%BE%D0%B4%D1%81%D0%BA%D0%B0%D0%B6%D0%B8%D1%82%D0%B5%20%D0%B2%D0%B5%D1%81%20%D0%B8%20%D1%86%D0%B5%D0%BD%D1%83." target="_blank" rel="noopener">Узнать цену</a>
-            <a class="btn btn-ghost" href="https://t.me/+79269344513" target="_blank" rel="noopener">Telegram</a>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="story" id="story">
-      <div class="wrap story-grid">
-        <div class="story-photo">
-          <img src="assets/5.jpg" alt="Мёд в горах" loading="lazy">
-        </div>
-        <div>
-          <p class="sec-kicker">О нас</p>
-          <h2>Молодой бренд.<br>Старые принципы.</h2>
-          <p>TAU BAL только начинается. За плечами — наставник с более чем десятилетним опытом в пчеловодстве. Он не терпит компромиссов: никакого сахара, никаких «улучшителей».</p>
-          <p>Мы учимся у него и верим в простую вещь: если мёд настоящий, он сам говорит за себя.</p>
-          <p class="quote">«Мы не делаем то, во что сами не верим.»</p>
-        </div>
-      </div>
-    </section>
-
-    <section class="why" id="why">
-      <div class="wrap">
-        <p class="sec-kicker">Почему так</p>
-        <h2>Четыре опоры</h2>
-        <div class="why-list">
-          <div class="why-item"><strong>Высота 1800+</strong><span>Пасека у подножья Эльбруса, не в низине</span></div>
-          <div class="why-item"><strong>Дикие травы</strong><span>Нектар горных цветов, а не монокультуры</span></div>
-          <div class="why-item"><strong>Без добавок</strong><span>Только мёд. Точка</span></div>
-          <div class="why-item"><strong>Честный путь</strong><span>От пасечника к вам, без «красивой» химии</span></div>
-        </div>
-        <div class="gallery">
-          <img src="assets/3.jpg" alt="Банка крупным планом" loading="lazy">
-          <img src="assets/5.jpg" alt="Мёд" loading="lazy">
-          <img src="assets/2.jpg" alt="Продукт" loading="lazy">
-        </div>
-      </div>
-    </section>
-
-    <section class="order" id="order">
-      <div class="wrap">
-        <div class="order-card">
-          <p class="sec-kicker">Связь</p>
-          <h2>Хотите попробовать?</h2>
-          <p>Напишите — ответим, подскажем по объёму и доставке. Без давления, по делу.</p>
-          <div class="order-btns">
-            <a class="btn btn-wa" href="https://wa.me/79269344513?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5!%20%D0%A5%D0%BE%D1%87%D1%83%20%D0%B7%D0%B0%D0%BA%D0%B0%D0%B7%D0%B0%D1%82%D1%8C%20%D0%BC%D1%91%D0%B4%20TAU%20BAL" target="_blank" rel="noopener">WhatsApp</a>
+          <p class="muted" style="margin-bottom:14px">Вес и цену напишем в переписке.</p>
+          <div class="actions">
+            <a class="btn btn-main" href="https://wa.me/79269344513?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5!%20%D0%98%D0%BD%D1%82%D0%B5%D1%80%D0%B5%D1%81%D1%83%D0%B5%D1%82%20%D0%BC%D1%91%D0%B4%20TAU%20BAL.%20%D0%9F%D0%BE%D0%B4%D1%81%D0%BA%D0%B0%D0%B6%D0%B8%D1%82%D0%B5%20%D1%86%D0%B5%D0%BD%D1%83." target="_blank" rel="noopener">Узнать цену</a>
             <a class="btn btn-tg" href="https://t.me/+79269344513" target="_blank" rel="noopener">Telegram</a>
-            <a class="btn btn-ghost" href="tel:+79269344513">Позвонить</a>
-          </div>
-          <div class="contacts">
-            <span>+7 (926) 934-45-13</span>
-            <span>Кисловодск · Кавказ</span>
           </div>
         </div>
       </div>
-    </section>
-
-    <footer>
-      <div class="logo">TAU BAL</div>
-      <p>Золото, рождённое в горах</p>
-      <p style="margin-top:14px">© 2026 · Высокогорный мёд Кавказа</p>
-    </footer>
-
-    <div class="dock">
-      <a class="btn btn-gold" href="https://wa.me/79269344513?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5!%20%D0%A5%D0%BE%D1%87%D1%83%20%D0%B7%D0%B0%D0%BA%D0%B0%D0%B7%D0%B0%D1%82%D1%8C%20%D0%BC%D1%91%D0%B4%20TAU%20BAL" target="_blank" rel="noopener">WhatsApp</a>
-      <a class="btn btn-tg" href="https://t.me/+79269344513" target="_blank" rel="noopener">Telegram</a>
     </div>
+  </section>
+
+  <section>
+    <div class="block">
+      <p class="label">О нас</p>
+      <h2>Молодой бренд. Старые принципы.</h2>
+      <p class="muted" style="margin-top:10px">TAU BAL только начинается. Нас ведёт наставник с опытом более 10 лет в пчеловодстве. Он не терпит компромиссов: никакого сахара, никаких «улучшителей».</p>
+      <p class="quote">«Мы не делаем то, во что сами не верим.»</p>
+    </div>
+  </section>
+
+  <section style="background:#12100e">
+    <div class="block">
+      <p class="label">Почему так</p>
+      <h2>Четыре опоры</h2>
+      <div class="grid2" style="margin-top:16px">
+        <div class="chip"><strong>Высота 1800+</strong><span>У подножья Эльбруса</span></div>
+        <div class="chip"><strong>Дикие травы</strong><span>Горный нектар, не монокультура</span></div>
+        <div class="chip"><strong>Без добавок</strong><span>Только мёд</span></div>
+        <div class="chip"><strong>Честный путь</strong><span>От пасечника к вам</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="order">
+    <div class="block">
+      <div class="order-box">
+        <p class="label">Заказать</p>
+        <h2>Хотите попробовать?</h2>
+        <p class="muted" style="margin-top:8px">Напишите — подскажем по объёму и доставке.</p>
+        <div class="actions">
+          <a class="btn btn-wa" href="https://wa.me/79269344513?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5!%20%D0%A5%D0%BE%D1%87%D1%83%20%D0%B7%D0%B0%D0%BA%D0%B0%D0%B7%D0%B0%D1%82%D1%8C%20%D0%BC%D1%91%D0%B4%20TAU%20BAL" target="_blank" rel="noopener">WhatsApp</a>
+          <a class="btn btn-tg" href="https://t.me/+79269344513" target="_blank" rel="noopener">Telegram</a>
+          <a class="btn btn-line" href="tel:+79269344513">Позвонить</a>
+        </div>
+        <p class="phone">+7 (926) 934-45-13 · Кисловодск</p>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="brand">TAU BAL</div>
+    <p>Золото, рождённое в горах</p>
+    <p style="margin-top:10px">© 2026 · Высокогорный мёд Кавказа</p>
+  </footer>
+
+  <div class="dock">
+    <a class="btn btn-wa" href="https://wa.me/79269344513?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5!%20%D0%A5%D0%BE%D1%87%D1%83%20%D0%B7%D0%B0%D0%BA%D0%B0%D0%B7%D0%B0%D1%82%D1%8C%20%D0%BC%D1%91%D0%B4%20TAU%20BAL" target="_blank" rel="noopener">WhatsApp</a>
+    <a class="btn btn-tg" href="https://t.me/+79269344513" target="_blank" rel="noopener">Telegram</a>
   </div>
-
-  <script>
-    (function () {
-      var intro = document.getElementById('intro');
-      var video = document.getElementById('introVideo');
-      var site = document.getElementById('site');
-      var bar = document.getElementById('introBar');
-      var skip = document.getElementById('skipIntro');
-      var done = false;
-
-      function finish() {
-        if (done) return;
-        done = true;
-        intro.classList.add('is-done');
-        intro.setAttribute('aria-hidden', 'true');
-        site.classList.add('is-on');
-        try { sessionStorage.setItem('tau_intro_seen', '1'); } catch (e) {}
-        try { video.pause(); } catch (e) {}
-      }
-
-      try {
-        if (sessionStorage.getItem('tau_intro_seen') === '1') {
-          intro.classList.add('is-done');
-          site.classList.add('is-on');
-          return;
-        }
-      } catch (e) {}
-
-      skip.addEventListener('click', finish);
-      video.addEventListener('ended', finish);
-      video.addEventListener('timeupdate', function () {
-        if (!video.duration) return;
-        bar.style.width = Math.min(100, (video.currentTime / video.duration) * 100) + '%';
-      });
-      video.addEventListener('error', finish);
-      setTimeout(finish, 18000);
-
-      var p = video.play();
-      if (p && p.catch) p.catch(function () { finish(); });
-    })();
-  </script>
 </body>
 </html>
