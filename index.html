@@ -51,6 +51,7 @@ h1,h2,h3{font-family:"Cormorant Garamond",Georgia,serif;font-weight:500;line-hei
   padding:20px var(--pad) 28px;
   padding-bottom:32px;
   overflow:hidden;
+  background:#0c1a2a;
 }
 .hero-bg{position:absolute;inset:0;z-index:0}
 .hero-bg img{
@@ -60,7 +61,7 @@ h1,h2,h3{font-family:"Cormorant Garamond",Georgia,serif;font-weight:500;line-hei
 }
 .hero-fade{
   position:absolute;inset:0;z-index:1;
-  background:linear-gradient(to bottom,rgba(10,9,8,.35) 0%,rgba(10,9,8,.7) 55%,#0a0908 100%);
+  background:linear-gradient(to bottom,rgba(10,9,8,.3) 0%,rgba(10,9,8,.65) 50%,#0a0908 100%);
 }
 .hero-inner{
   position:relative;z-index:2;
@@ -238,7 +239,7 @@ footer .logo{display:inline-block;margin-bottom:6px;color:var(--gold)}
 
 <section class="hero">
   <div class="hero-bg">
-    <img src="assets/elbrus.jpg" alt="Эльбрус" width="555" height="612" fetchpriority="high">
+    <img src="assets/elbrus.jpg" alt="Эльбрус" width="555" height="612" fetchpriority="high" onerror="this.style.display='none'">
   </div>
   <div class="hero-fade"></div>
   <div class="hero-inner">
