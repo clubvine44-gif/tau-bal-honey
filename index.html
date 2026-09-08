@@ -45,65 +45,73 @@ h1,h2,h3{font-family:"Cormorant Garamond",Georgia,serif;font-weight:500;line-hei
   min-height:42px;display:inline-flex;align-items:center;
 }
 
-/* Hero: ТОЛЬКО фото гор, не видео */
+/* Верх: горы + короткое видео + текст */
 .hero{
   position:relative;
-  min-height:58vh;
-  display:flex;align-items:flex-end;
+  padding:20px var(--pad) 28px;
+  padding-bottom:32px;
   overflow:hidden;
 }
 .hero-bg{
-  position:absolute;inset:0;
+  position:absolute;inset:0;z-index:0;
 }
 .hero-bg img{
   width:100%;height:100%;
   object-fit:cover;
-  object-position:center 40%;
+  object-position:center 35%;
 }
 .hero-fade{
-  position:absolute;inset:0;
-  background:linear-gradient(to top,#0a0908 0%,rgba(10,9,8,.55) 40%,rgba(10,9,8,.25) 100%);
+  position:absolute;inset:0;z-index:1;
+  background:linear-gradient(to bottom,rgba(10,9,8,.45) 0%,rgba(10,9,8,.75) 55%,#0a0908 100%);
 }
-.hero-text{
-  position:relative;z-index:1;
-  padding:24px var(--pad) 32px;
-  width:100%;
+.hero-inner{
+  position:relative;z-index:2;
+  max-width:720px;margin:0 auto;
 }
 .eyebrow{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);margin-bottom:8px}
-.hero h1{font-size:clamp(1.8rem,7vw,2.5rem);margin-bottom:10px}
+.hero h1{font-size:clamp(1.75rem,7vw,2.4rem);margin-bottom:8px}
 .hero h1 em{font-style:italic;color:var(--gold2)}
-.lead{color:rgba(243,235,224,.85);font-size:15px;margin-bottom:16px}
-.row-btns{display:flex;gap:8px}
-.row-btns a{
-  flex:1;min-height:44px;display:flex;align-items:center;justify-content:center;
-  border-radius:10px;font-size:14px;font-weight:600;
-  border:1px solid rgba(243,235,224,.22);
-  background:rgba(0,0,0,.35);
+.lead{color:rgba(243,235,224,.88);font-size:15px;margin-bottom:16px}
+
+/* 3 сек — цикл, без play */
+.loop-video{
+  border-radius:14px;
+  overflow:hidden;
+  border:1px solid rgba(243,235,224,.18);
+  background:#000;
+  box-shadow:0 12px 40px rgba(0,0,0,.45);
+  margin-bottom:14px;
+}
+.loop-video video{
+  width:100%;
+  height:auto;
+  max-height:52vh;
+  object-fit:contain;
+  background:#000;
+  pointer-events:none;
 }
 
-section{padding:32px var(--pad)}
+section{padding:28px var(--pad)}
 .wrap{max-width:720px;margin:0 auto}
 .label{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);margin-bottom:6px}
-h2{font-size:clamp(1.4rem,5vw,1.9rem);margin-bottom:14px}
+h2{font-size:clamp(1.4rem,5vw,1.9rem);margin-bottom:12px}
 
-/* Главное видео — карточка, contain, без растягивания */
-.video-card{
-  background:#000;
+/* 15 сек под 3-сек */
+.promo-card{
   border-radius:14px;
   overflow:hidden;
   border:1px solid var(--line);
-  margin-bottom:20px;
+  background:#000;
+  margin-bottom:8px;
 }
-.video-card video{
+.promo-card video{
   width:100%;
   height:auto;
   max-height:70vh;
   object-fit:contain;
   background:#000;
-  margin:0 auto;
 }
 
-/* Фото — один размер */
 .photo-grid{
   display:grid;
   grid-template-columns:1fr 1fr;
@@ -116,13 +124,10 @@ h2{font-size:clamp(1.4rem,5vw,1.9rem);margin-bottom:14px}
   border:1px solid var(--line);
   background:#0e0c0a;
   cursor:pointer;
-  -webkit-tap-highlight-color:transparent;
 }
 .photo-grid .cell img{
-  width:100%;
-  height:100%;
-  object-fit:cover;
-  object-position:center;
+  width:100%;height:100%;
+  object-fit:cover;object-position:center;
 }
 
 h3{font-size:1.25rem;margin-bottom:6px}
@@ -180,7 +185,6 @@ footer{
 }
 footer .logo{display:inline-block;margin-bottom:6px;color:var(--gold)}
 
-/* Lightbox */
 .lb{
   position:fixed;inset:0;z-index:200;
   background:rgba(0,0,0,.96);
@@ -201,10 +205,7 @@ footer .logo{display:inline-block;margin-bottom:6px;color:var(--gold)}
   display:flex;align-items:center;justify-content:center;
   padding:52px 48px;
 }
-.lb-stage img{
-  max-width:100%;max-height:100%;object-fit:contain;
-  user-select:none;-webkit-user-drag:none;
-}
+.lb-stage img{max-width:100%;max-height:100%;object-fit:contain;user-select:none;-webkit-user-drag:none}
 .lb-prev,.lb-next{
   position:absolute;top:50%;transform:translateY(-50%);z-index:4;
   width:40px;height:40px;border:0;border-radius:50%;
@@ -220,15 +221,15 @@ footer .logo{display:inline-block;margin-bottom:6px;color:var(--gold)}
   .order .cta-row a{flex:0 1 auto;min-width:120px;padding:0 16px}
 }
 @media(min-width:720px){
-  .hero{min-height:70vh}
-  .hero-text{padding:40px 28px 48px;max-width:560px}
-  .product-block{
-    display:grid;grid-template-columns:1.1fr 1fr;gap:28px;align-items:start;
-  }
+  .hero{padding:32px 24px 40px}
+  .hero-inner{display:grid;grid-template-columns:1fr 1.05fr;gap:28px;align-items:center}
+  .hero h1{font-size:2.6rem}
+  .loop-video{margin-bottom:0}
+  .product-block{display:grid;grid-template-columns:1.1fr 1fr;gap:28px;align-items:start}
   .grid2{grid-template-columns:repeat(4,1fr)}
   .order{max-width:420px;margin:0 auto}
   .wrap{max-width:960px}
-  section{padding:44px 24px}
+  section{padding:40px 24px}
 }
 </style>
 </head>
@@ -239,34 +240,30 @@ footer .logo{display:inline-block;margin-bottom:6px;color:var(--gold)}
   <a class="btn-gold" href="https://wa.me/79269344513?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5!%20%D0%A5%D0%BE%D1%87%D1%83%20%D0%B7%D0%B0%D0%BA%D0%B0%D0%B7%D0%B0%D1%82%D1%8C%20%D0%BC%D1%91%D0%B4%20TAU%20BAL" target="_blank" rel="noopener">Заказать</a>
 </header>
 
-<!-- Фон: фото гор (не видео) -->
+<!-- Верх экрана: горы + 3 сек цикл + кратко -->
 <section class="hero">
   <div class="hero-bg">
     <img src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=1920&q=90" alt="Горы" width="1920" height="1280" fetchpriority="high">
   </div>
   <div class="hero-fade"></div>
-  <div class="hero-text">
-    <p class="eyebrow">Кисловодск · Кавказ · 1800+ м</p>
-    <h1>Настоящий мёд<br>с <em>высоты гор</em></h1>
-    <p class="lead">Нектар диких трав у подножья Эльбруса. Без сахара. Без добавок.</p>
-    <div class="row-btns">
-      <a href="#video">Видео</a>
-      <a href="#product">Продукт</a>
+  <div class="hero-inner">
+    <div>
+      <p class="eyebrow">Кисловодск · Кавказ · 1800+ м</p>
+      <h1>Настоящий мёд<br>с <em>высоты гор</em></h1>
+      <p class="lead">Нектар диких трав у подножья Эльбруса. Без сахара. Без добавок.</p>
+    </div>
+    <div class="loop-video">
+      <video autoplay muted loop playsinline poster="assets/jar-poster.jpg" preload="auto">
+        <source src="assets/jar-small.mp4" type="video/mp4">
+      </video>
     </div>
   </div>
 </section>
 
-<!-- Главное видео — отдельной карточкой, без растягивания -->
-<section id="video">
+<!-- 15 сек сразу под 3-сек -->
+<section id="promo" style="padding-top:8px">
   <div class="wrap">
-    <p class="label">Видео</p>
-    <h2>Продукт в кадре</h2>
-    <div class="video-card">
-      <video controls playsinline poster="assets/jar-poster.jpg" preload="metadata">
-        <source src="assets/jar-small.mp4" type="video/mp4">
-      </video>
-    </div>
-    <div class="video-card">
+    <div class="promo-card">
       <video controls playsinline poster="assets/promo-poster.jpg" preload="metadata">
         <source src="assets/promo-small.mp4" type="video/mp4">
       </video>
