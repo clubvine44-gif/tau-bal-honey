@@ -4,121 +4,188 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>TAU BAL — Высокогорный мёд Кавказа</title>
+<meta name="description" content="Настоящий высокогорный мёд с Кавказа. Нектар диких трав у подножья Эльбруса. Кисловодск.">
 <meta name="theme-color" content="#0a0908">
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;1,500&family=Manrope:wght@400;600&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400;1,500&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
-:root{--bg:#0a0908;--bg2:#12100e;--card:#161411;--text:#f3ebe0;--muted:#a89a88;--gold:#c9a227;--gold-soft:#d4b45a;--line:rgba(243,235,224,.12)}
+:root{--bg:#0a0908;--bg2:#12100e;--card:#161411;--text:#f3ebe0;--muted:#a89a88;--gold:#c9a227;--gold-soft:#d4b45a;--line:rgba(243,235,224,.1);--line2:rgba(243,235,224,.18)}
 *{box-sizing:border-box;margin:0;padding:0}
-body{font-family:Manrope,system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.6}
+html{scroll-behavior:smooth}
+body{font-family:Manrope,system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;-webkit-font-smoothing:antialiased}
+img,video{display:block;max-width:100%}
 a{color:inherit;text-decoration:none}
-h1,h2{font-family:"Cormorant Garamond",Georgia,serif;font-weight:500;line-height:1.15}
-.header{position:sticky;top:0;z-index:40;display:flex;align-items:center;justify-content:space-between;padding:16px 20px;background:rgba(10,9,8,.94);border-bottom:1px solid var(--line)}
-.logo{font-family:"Cormorant Garamond",serif;font-size:1.35rem;letter-spacing:.22em;color:var(--gold)}
-.btn-gold{background:var(--gold);color:#1a1406;font-size:13px;font-weight:600;padding:10px 16px;border-radius:8px}
-.hero{padding:48px 20px 56px;max-width:640px}
+h1,h2,h3{font-family:"Cormorant Garamond",Georgia,serif;font-weight:500;line-height:1.15}
+#splash{position:fixed;inset:0;z-index:100;background:#000;display:flex;align-items:center;justify-content:center;transition:opacity .7s ease,visibility .7s}
+#splash.hide{opacity:0;visibility:hidden;pointer-events:none}
+#splash video{width:100%;height:100%;object-fit:cover}
+#splash .skip{position:absolute;bottom:28px;right:20px;z-index:2;background:rgba(0,0,0,.55);border:1px solid rgba(255,255,255,.25);color:#fff;font-size:13px;letter-spacing:.08em;text-transform:uppercase;padding:10px 18px;border-radius:999px;cursor:pointer;backdrop-filter:blur(6px)}
+.header{position:sticky;top:0;z-index:40;display:flex;align-items:center;justify-content:space-between;padding:16px 20px;background:rgba(10,9,8,.92);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.logo{font-family:"Cormorant Garamond",serif;font-size:1.35rem;letter-spacing:.22em;color:var(--gold);font-weight:500}
+.btn-gold{background:var(--gold);color:#1a1406;font-size:13px;font-weight:600;padding:9px 14px;border-radius:8px}
+.hero{position:relative;min-height:88vh;display:flex;flex-direction:column;justify-content:flex-end;overflow:hidden}
+.hero-media{position:absolute;inset:0;z-index:0}
+.hero-media video,.hero-media img{width:100%;height:100%;object-fit:cover}
+.hero-overlay{position:absolute;inset:0;z-index:1;background:linear-gradient(to top,rgba(10,9,8,.95) 0%,rgba(10,9,8,.55) 45%,rgba(10,9,8,.25) 100%)}
+.hero-content{position:relative;z-index:2;padding:40px 20px 56px;max-width:640px}
 .eyebrow{font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);margin-bottom:14px}
-.hero h1{font-size:clamp(2.4rem,9vw,3.4rem);margin-bottom:16px}
+.hero h1{font-size:clamp(2.4rem,9vw,3.6rem);margin-bottom:16px}
 .hero h1 em{font-style:italic;color:var(--gold-soft)}
-.lead{color:var(--muted);margin-bottom:28px;font-size:1.05rem}
-.actions{display:flex;flex-wrap:wrap;gap:10px}
+.hero-lead{color:var(--muted);font-size:1.05rem;max-width:28rem;margin-bottom:28px}
+.hero-actions{display:flex;flex-wrap:wrap;gap:10px}
 .btn{display:inline-flex;align-items:center;justify-content:center;min-height:52px;padding:0 22px;border-radius:10px;font-weight:600;font-size:15px}
 .btn-wa{background:#25d366;color:#053b1a}
 .btn-tg{background:#2aabee;color:#04263a}
-.btn-ghost{border:1px solid var(--line);color:var(--text)}
-section{padding:56px 20px}
-.inner{max-width:720px;margin:0 auto}
-.label{font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);margin-bottom:10px}
-h2{font-size:clamp(1.7rem,5vw,2.3rem);margin-bottom:14px}
-.card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:24px;margin-top:16px}
-.features{list-style:none;margin:16px 0}
-.features li{padding:10px 0;border-bottom:1px solid var(--line);font-size:15px}
+.btn-ghost{border:1px solid var(--line2);color:var(--text);background:rgba(255,255,255,.04)}
+section{padding:64px 20px}
+.section-inner{max-width:960px;margin:0 auto}
+.section-label{font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);margin-bottom:10px}
+h2{font-size:clamp(1.8rem,5vw,2.5rem);margin-bottom:12px}
+.product-grid{display:grid;gap:28px;margin-top:28px}
+@media(min-width:720px){.product-grid{grid-template-columns:1.05fr 1fr;align-items:center;gap:40px}}
+.product-media{border-radius:18px;overflow:hidden;border:1px solid var(--line);background:#1a1714}
+.product-media video,.product-media img{width:100%;aspect-ratio:4/5;object-fit:cover}
+.product-info h3{font-size:1.5rem;margin-bottom:8px}
+.product-info .price-note{color:var(--muted);font-size:15px;margin-bottom:18px}
+.features{list-style:none;margin-bottom:24px}
+.features li{padding:11px 0;border-bottom:1px solid var(--line);font-size:15px;display:flex;gap:10px;align-items:flex-start}
 .features li:last-child{border-bottom:0}
-.muted{color:var(--muted)}
-.quote{margin:20px 0 0;padding-left:16px;border-left:2px solid var(--gold);font-family:"Cormorant Garamond",serif;font-style:italic;font-size:1.4rem;color:var(--gold-soft)}
-.grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:20px}
-@media(min-width:600px){.grid{grid-template-columns:repeat(4,1fr)}}
-.chip{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px 14px;text-align:center}
-.chip strong{display:block;font-family:"Cormorant Garamond",serif;font-size:1.15rem;margin-bottom:4px}
-.chip span{font-size:13px;color:var(--muted)}
-.order-box{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:28px 22px;text-align:center;max-width:480px;margin:0 auto}
-.order-box .actions{justify-content:center;margin-top:18px}
-.phone{margin-top:16px;font-size:15px;color:var(--muted)}
-.phone a{color:var(--gold);font-weight:600}
-footer{text-align:center;padding:36px 20px;border-top:1px solid var(--line);color:var(--muted);font-size:13px}
+.features li::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--gold);margin-top:8px;flex-shrink:0}
+.product-actions{display:flex;flex-wrap:wrap;gap:10px}
+.story{background:var(--bg2)}
+.story-text{max-width:560px}
+.story-text p{color:var(--muted);margin-bottom:16px;font-size:1.05rem}
+.quote{margin:28px 0 0;padding:18px 0 18px 18px;border-left:2px solid var(--gold);font-family:"Cormorant Garamond",serif;font-style:italic;font-size:1.45rem;color:var(--gold-soft);line-height:1.35}
+.benefits-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:28px}
+@media(min-width:640px){.benefits-grid{grid-template-columns:repeat(4,1fr);gap:14px}}
+.benefit{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:20px 16px;text-align:center}
+.benefit strong{display:block;font-family:"Cormorant Garamond",serif;font-size:1.2rem;margin-bottom:6px}
+.benefit span{font-size:13px;color:var(--muted);line-height:1.4}
+.gallery-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:24px}
+@media(min-width:640px){.gallery-grid{grid-template-columns:repeat(3,1fr);gap:14px}}
+.gallery-grid img{width:100%;aspect-ratio:1;object-fit:cover;border-radius:14px;border:1px solid var(--line)}
+.order-section{background:var(--bg2)}
+.order-box{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:32px 24px;text-align:center;max-width:520px;margin:0 auto}
+.order-box h2{margin-bottom:10px}
+.order-box p{color:var(--muted);margin-bottom:24px}
+.order-btns{display:flex;flex-direction:column;gap:10px}
+@media(min-width:480px){.order-btns{flex-direction:row;justify-content:center}}
+.phone-line{margin-top:20px;font-size:15px;color:var(--muted)}
+.phone-line a{color:var(--gold);font-weight:600}
+footer{text-align:center;padding:40px 20px 48px;border-top:1px solid var(--line);color:var(--muted);font-size:13px}
 footer .logo{margin-bottom:8px;display:inline-block}
+footer p{margin-top:6px}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}#splash{transition:none}}
 </style>
 </head>
 <body>
+
+<div id="splash">
+  <video id="splashVideo" playsinline muted autoplay poster="assets/promo-poster.jpg">
+    <source src="assets/promo-small.mp4" type="video/mp4">
+  </video>
+  <button class="skip" type="button" id="skipBtn">Пропустить</button>
+</div>
+
 <header class="header">
   <a href="#" class="logo">TAU BAL</a>
   <a class="btn-gold" href="https://wa.me/79269344513?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5!%20%D0%A5%D0%BE%D1%87%D1%83%20%D0%B7%D0%B0%D0%BA%D0%B0%D0%B7%D0%B0%D1%82%D1%8C%20%D0%BC%D1%91%D0%B4%20TAU%20BAL" target="_blank" rel="noopener">Заказать</a>
 </header>
 
 <section class="hero">
-  <p class="eyebrow">Кисловодск · Кавказ · 1800+ м</p>
-  <h1>Настоящий мёд<br>с <em>высоты гор</em></h1>
-  <p class="lead">Нектар диких трав у подножья Эльбруса. Без сахара. Без добавок. Только то, что создала природа.</p>
-  <div class="actions">
-    <a class="btn btn-wa" href="https://wa.me/79269344513?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5!%20%D0%A5%D0%BE%D1%87%D1%83%20%D0%B7%D0%B0%D0%BA%D0%B0%D0%B7%D0%B0%D1%82%D1%8C%20%D0%BC%D1%91%D0%B4%20TAU%20BAL" target="_blank" rel="noopener">Написать в WhatsApp</a>
-    <a class="btn btn-ghost" href="#product">Смотреть продукт</a>
+  <div class="hero-media">
+    <video autoplay muted loop playsinline poster="assets/jar-poster.jpg">
+      <source src="assets/jar-small.mp4" type="video/mp4">
+    </video>
+  </div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <p class="eyebrow">Кисловодск · Кавказ · 1800+ м</p>
+    <h1>Настоящий мёд<br>с <em>высоты гор</em></h1>
+    <p class="hero-lead">Нектар диких трав у подножья Эльбруса. Без сахара. Без добавок. Только то, что создала природа.</p>
+    <div class="hero-actions">
+      <a class="btn btn-wa" href="https://wa.me/79269344513?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5!%20%D0%A5%D0%BE%D1%87%D1%83%20%D0%B7%D0%B0%D0%BA%D0%B0%D0%B7%D0%B0%D1%82%D1%8C%20%D0%BC%D1%91%D0%B4%20TAU%20BAL" target="_blank" rel="noopener">Написать в WhatsApp</a>
+      <a class="btn btn-ghost" href="#product">Смотреть продукт</a>
+    </div>
   </div>
 </section>
 
-<section id="product" style="background:var(--bg2)">
-  <div class="inner">
-    <p class="label">Продукт</p>
+<section id="product">
+  <div class="section-inner">
+    <p class="section-label">Продукт</p>
     <h2>Мёд диких горных трав</h2>
-    <div class="card">
-      <p class="muted" style="margin-bottom:8px">Собран на высоте 1800+ метров. Фото банки — скоро добавим в полном качестве.</p>
-      <ul class="features">
-        <li>Нектар диких кавказских трав</li>
-        <li>100% натуральный — без сахара и добавок</li>
-        <li>От пасечника, не с конвейера</li>
-        <li>Доставка по всей России</li>
-      </ul>
-      <p class="muted" style="margin-bottom:16px">Вес и цену уточним в переписке.</p>
-      <div class="actions">
-        <a class="btn btn-wa" href="https://wa.me/79269344513?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5!%20%D0%98%D0%BD%D1%82%D0%B5%D1%80%D0%B5%D1%81%D1%83%D0%B5%D1%82%20%D0%BC%D1%91%D0%B4%20TAU%20BAL" target="_blank" rel="noopener">Узнать цену</a>
-        <a class="btn btn-tg" href="https://t.me/+79269344513" target="_blank" rel="noopener">Telegram</a>
+    <div class="product-grid">
+      <div class="product-media">
+        <video autoplay muted loop playsinline poster="assets/jar-poster.jpg">
+          <source src="assets/jar-small.mp4" type="video/mp4">
+        </video>
       </div>
+      <div class="product-info">
+        <h3>Высокогорный мёд Кавказа</h3>
+        <p class="price-note">Собран на высоте 1800+ метров. Вес и цену уточним в переписке.</p>
+        <ul class="features">
+          <li>Нектар диких кавказских трав</li>
+          <li>100% натуральный — без сахара и добавок</li>
+          <li>От пасечника, не с конвейера</li>
+          <li>Доставка по всей России</li>
+        </ul>
+        <div class="product-actions">
+          <a class="btn btn-wa" href="https://wa.me/79269344513?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5!%20%D0%98%D0%BD%D1%82%D0%B5%D1%80%D0%B5%D1%81%D1%83%D0%B5%D1%82%20%D0%BC%D1%91%D0%B4%20TAU%20BAL" target="_blank" rel="noopener">Узнать цену</a>
+          <a class="btn btn-tg" href="https://t.me/+79269344513" target="_blank" rel="noopener">Telegram</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="story">
+  <div class="section-inner">
+    <p class="section-label">О нас</p>
+    <h2>Молодой бренд.<br>Старые принципы.</h2>
+    <div class="story-text" style="margin-top:20px">
+      <p>TAU BAL только начинается. Нас ведёт наставник с опытом более десяти лет на высокогорных пасеках Кавказа.</p>
+      <p>Мы не гонимся за объёмами. Каждый сезон — это работа пчёл на диких травах у подножья Эльбруса. Никакого сахара. Никаких добавок. Только то, во что сами верим.</p>
+      <p class="quote">«Золото, рождённое в горах.»</p>
     </div>
   </div>
 </section>
 
 <section>
-  <div class="inner">
-    <p class="label">О нас</p>
-    <h2>Молодой бренд. Старые принципы.</h2>
-    <p class="muted" style="margin-top:12px">TAU BAL только начинается. Нас ведёт наставник с опытом более десяти лет на высокогорных пасеках Кавказа. Никакого сахара. Никаких добавок. Только то, во что сами верим.</p>
-    <p class="quote">«Золото, рождённое в горах.»</p>
-  </div>
-</section>
-
-<section style="background:var(--bg2)">
-  <div class="inner">
-    <p class="label">Почему так</p>
+  <div class="section-inner">
+    <p class="section-label">Почему так</p>
     <h2>Четыре опоры</h2>
-    <div class="grid">
-      <div class="chip"><strong>1800+ м</strong><span>У подножья Эльбруса</span></div>
-      <div class="chip"><strong>Дикие травы</strong><span>Горный нектар</span></div>
-      <div class="chip"><strong>Без добавок</strong><span>Только мёд</span></div>
-      <div class="chip"><strong>Честный путь</strong><span>От пасечника к вам</span></div>
+    <div class="benefits-grid">
+      <div class="benefit"><strong>1800+ м</strong><span>У подножья Эльбруса</span></div>
+      <div class="benefit"><strong>Дикие травы</strong><span>Горный нектар</span></div>
+      <div class="benefit"><strong>Без добавок</strong><span>Только мёд</span></div>
+      <div class="benefit"><strong>Честный путь</strong><span>От пасечника к вам</span></div>
     </div>
   </div>
 </section>
 
-<section id="order">
-  <div class="inner">
+<section style="padding-top:0">
+  <div class="section-inner">
+    <div class="gallery-grid">
+      <img src="assets/jar1.jpg" alt="Банка TAU BAL" width="400" height="400" loading="lazy">
+      <img src="assets/jar2.jpg" alt="Мёд крупным планом" width="400" height="400" loading="lazy">
+      <img src="assets/jar3.jpg" alt="Высокогорный мёд" width="400" height="400" loading="lazy">
+    </div>
+  </div>
+</section>
+
+<section class="order-section" id="order">
+  <div class="section-inner">
     <div class="order-box">
-      <p class="label">Заказать</p>
+      <p class="section-label">Заказать</p>
       <h2>Хотите попробовать?</h2>
-      <p class="muted" style="margin-top:8px">Напишите — подскажем по объёму, вкусу и доставке.</p>
-      <div class="actions">
+      <p>Напишите — подскажем по объёму, вкусу и доставке. Отвечаем быстро.</p>
+      <div class="order-btns">
         <a class="btn btn-wa" href="https://wa.me/79269344513?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5!%20%D0%A5%D0%BE%D1%87%D1%83%20%D0%B7%D0%B0%D0%BA%D0%B0%D0%B7%D0%B0%D1%82%D1%8C%20%D0%BC%D1%91%D0%B4%20TAU%20BAL" target="_blank" rel="noopener">WhatsApp</a>
         <a class="btn btn-tg" href="https://t.me/+79269344513" target="_blank" rel="noopener">Telegram</a>
         <a class="btn btn-ghost" href="tel:+79269344513">Позвонить</a>
       </div>
-      <p class="phone"><a href="tel:+79269344513">+7 (926) 934-45-13</a><br>Кисловодск</p>
+      <p class="phone-line"><a href="tel:+79269344513">+7 (926) 934-45-13</a><br>Кисловодск</p>
     </div>
   </div>
 </section>
@@ -126,7 +193,27 @@ footer .logo{margin-bottom:8px;display:inline-block}
 <footer>
   <div class="logo">TAU BAL</div>
   <p>Золото, рождённое в горах</p>
-  <p style="margin-top:10px">© 2026 · Высокогорный мёд Кавказа</p>
+  <p style="margin-top:12px">© 2026 · Высокогорный мёд Кавказа</p>
 </footer>
+
+<script>
+(function(){
+  var splash=document.getElementById('splash');
+  var video=document.getElementById('splashVideo');
+  var skip=document.getElementById('skipBtn');
+  function hideSplash(){
+    splash.classList.add('hide');
+    try{sessionStorage.setItem('tau_splash_seen','1')}catch(e){}
+    if(video){video.pause();video.removeAttribute('src');video.load()}
+  }
+  try{if(sessionStorage.getItem('tau_splash_seen')==='1'){hideSplash();return}}catch(e){}
+  skip.addEventListener('click',hideSplash);
+  if(video){
+    video.addEventListener('ended',hideSplash);
+    video.addEventListener('error',hideSplash);
+    setTimeout(hideSplash,18000);
+  } else hideSplash();
+})();
+</script>
 </body>
 </html>
