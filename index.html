@@ -4,10 +4,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
-<meta http-equiv="Pragma" content="no-cache">
-<meta http-equiv="Expires" content="0">
 <title>TAU BAL — Высокогорный мёд Кавказа</title>
-<meta name="description" content="Настоящий высокогорный мёд с Кавказа. Кисловодск. 1800+ м.">
+<meta name="description" content="Настоящий высокогорный мёд с Кавказа. Кисловодск. 1800+ м у Эльбруса.">
 <meta name="theme-color" content="#0a0908">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -28,98 +26,95 @@ body{
   line-height:1.5;-webkit-font-smoothing:antialiased;
   overflow-x:hidden;
 }
-img,video{display:block;width:100%;height:auto}
+img,video{display:block;max-width:100%}
 a{color:inherit;text-decoration:none}
 h1,h2,h3{font-family:"Cormorant Garamond",Georgia,serif;font-weight:500;line-height:1.2}
 
 .header{
   position:sticky;top:0;z-index:50;
-  display:flex;align-items:center;justify-content:space-between;
-  gap:12px;
+  display:flex;align-items:center;justify-content:space-between;gap:12px;
   padding:12px var(--pad);
   padding-top:max(12px,env(safe-area-inset-top));
-  background:rgba(10,9,8,.96);
+  background:rgba(10,9,8,.94);
+  backdrop-filter:blur(10px);
   border-bottom:1px solid var(--line);
 }
-.logo{
-  font-family:"Cormorant Garamond",serif;
-  font-size:1.15rem;letter-spacing:.18em;color:var(--gold);
-}
+.logo{font-family:"Cormorant Garamond",serif;font-size:1.15rem;letter-spacing:.18em;color:var(--gold)}
 .btn-gold{
-  flex-shrink:0;
-  background:var(--gold);color:#1a1406;
-  font-size:13px;font-weight:700;
-  padding:10px 14px;border-radius:8px;
+  flex-shrink:0;background:var(--gold);color:#1a1406;
+  font-size:13px;font-weight:700;padding:10px 14px;border-radius:8px;
   min-height:42px;display:inline-flex;align-items:center;
 }
 
-/* Hero: видео целиком, без обрезки */
-.hero{background:var(--bg)}
-.hero-video{
-  background:#000;
-  width:100%;
+/* Hero with Elbrus mountain background */
+.hero{
+  position:relative;
+  min-height:72vh;
+  display:flex;align-items:flex-end;
+  overflow:hidden;
 }
-.hero-video video{
-  width:100%;
-  max-height:55vh;
-  object-fit:contain;
-  background:#000;
-  margin:0 auto;
+.hero-bg{
+  position:absolute;inset:0;z-index:0;
 }
-.hero-text{padding:20px var(--pad) 28px}
-.eyebrow{
-  font-size:11px;letter-spacing:.12em;text-transform:uppercase;
-  color:var(--gold);margin-bottom:8px;
+.hero-bg img{
+  width:100%;height:100%;
+  object-fit:cover;
+  object-position:center 35%;
 }
-.hero h1{font-size:clamp(1.75rem,7vw,2.4rem);margin-bottom:10px}
+.hero-overlay{
+  position:absolute;inset:0;z-index:1;
+  background:
+    linear-gradient(to top, rgba(10,9,8,.97) 0%, rgba(10,9,8,.55) 45%, rgba(10,9,8,.35) 100%);
+}
+.hero-text{
+  position:relative;z-index:2;
+  padding:28px var(--pad) 36px;
+  width:100%;max-width:640px;
+}
+.eyebrow{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);margin-bottom:8px}
+.hero h1{font-size:clamp(1.85rem,7.5vw,2.6rem);margin-bottom:10px;text-shadow:0 2px 20px rgba(0,0,0,.5)}
 .hero h1 em{font-style:italic;color:var(--gold2)}
-.lead{color:var(--muted);font-size:15px;margin-bottom:16px}
+.lead{color:rgba(243,235,224,.85);font-size:15px;margin-bottom:18px;max-width:22rem}
 .row-btns{display:flex;gap:8px}
 .row-btns a{
-  flex:1;text-align:center;
-  min-height:44px;display:flex;align-items:center;justify-content:center;
+  flex:1;text-align:center;min-height:44px;
+  display:flex;align-items:center;justify-content:center;
   border-radius:10px;font-size:14px;font-weight:600;
-  border:1px solid var(--line);
+  border:1px solid rgba(243,235,224,.25);
+  background:rgba(0,0,0,.25);backdrop-filter:blur(4px);
 }
 
-section{padding:32px var(--pad)}
-.wrap{max-width:640px;margin:0 auto}
-.label{
-  font-size:11px;letter-spacing:.12em;text-transform:uppercase;
-  color:var(--gold);margin-bottom:6px;
-}
-h2{font-size:clamp(1.45rem,5vw,1.9rem);margin-bottom:14px}
+section{padding:36px var(--pad)}
+.wrap{max-width:720px;margin:0 auto}
+.label{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);margin-bottom:6px}
+h2{font-size:clamp(1.45rem,5vw,1.95rem);margin-bottom:14px}
 
-/* Карточка медиа — фото/видео без crop */
-.card-media{
-  border-radius:12px;
-  overflow:hidden;
+/* Product photo — uniform frame */
+.product-photo{
+  border-radius:14px;overflow:hidden;
   border:1px solid var(--line);
   background:#0e0c0a;
+  aspect-ratio:3/4;
   margin-bottom:16px;
+  cursor:pointer;
+  -webkit-tap-highlight-color:transparent;
 }
-.card-media img,
-.card-media video{
-  width:100%;
-  height:auto;
-  object-fit:contain;
-  vertical-align:top;
+.product-photo img{
+  width:100%;height:100%;
+  object-fit:cover;
+  object-position:center;
 }
 
 h3{font-size:1.25rem;margin-bottom:6px}
 .note{color:var(--muted);font-size:14px;margin-bottom:12px}
 ul.list{list-style:none;margin-bottom:16px}
 ul.list li{
-  padding:9px 0;
-  border-bottom:1px solid var(--line);
-  font-size:14px;
-  padding-left:14px;
-  position:relative;
+  padding:9px 0;border-bottom:1px solid var(--line);
+  font-size:14px;padding-left:14px;position:relative;
 }
 ul.list li:last-child{border-bottom:0}
 ul.list li::before{
-  content:"";
-  position:absolute;left:0;top:15px;
+  content:"";position:absolute;left:0;top:15px;
   width:5px;height:5px;border-radius:50%;background:var(--gold);
 }
 .cta-row{display:flex;gap:8px;flex-wrap:wrap}
@@ -135,27 +130,46 @@ ul.list li::before{
 .bg2{background:var(--bg2)}
 .story p{color:var(--muted);font-size:15px;margin-bottom:12px}
 .quote{
-  margin-top:16px;padding-left:14px;
-  border-left:2px solid var(--gold);
+  margin-top:16px;padding-left:14px;border-left:2px solid var(--gold);
   font-family:"Cormorant Garamond",serif;font-style:italic;
   font-size:1.2rem;color:var(--gold2);
 }
 
-.grid2{
-  display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:12px;
-}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:12px}
 .chip{
   background:var(--card);border:1px solid var(--line);
   border-radius:12px;padding:14px 10px;text-align:center;
 }
-.chip strong{
-  display:block;font-family:"Cormorant Garamond",serif;
-  font-size:1.05rem;margin-bottom:4px;
-}
+.chip strong{display:block;font-family:"Cormorant Garamond",serif;font-size:1.05rem;margin-bottom:4px}
 .chip span{font-size:12px;color:var(--muted)}
 
-.gallery{display:flex;flex-direction:column;gap:12px}
-.gallery .card-media{margin-bottom:0}
+/* Gallery — equal cells */
+.gallery{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:10px;
+}
+.gallery-item{
+  aspect-ratio:1;
+  border-radius:12px;
+  overflow:hidden;
+  border:1px solid var(--line);
+  background:#0e0c0a;
+  cursor:pointer;
+  -webkit-tap-highlight-color:transparent;
+  position:relative;
+}
+.gallery-item:first-child{
+  grid-column:1 / -1;
+  aspect-ratio:4/3;
+}
+.gallery-item img{
+  width:100%;height:100%;
+  object-fit:cover;
+  object-position:center;
+  transition:transform .25s ease;
+}
+.gallery-item:active img{transform:scale(1.03)}
 
 .order{
   background:var(--card);border:1px solid var(--line);
@@ -170,31 +184,70 @@ ul.list li::before{
 footer{
   text-align:center;
   padding:28px var(--pad) max(36px,env(safe-area-inset-bottom));
-  border-top:1px solid var(--line);
-  color:var(--muted);font-size:13px;
+  border-top:1px solid var(--line);color:var(--muted);font-size:13px;
 }
-footer .logo{display:inline-block;margin-bottom:6px}
+footer .logo{display:inline-block;margin-bottom:6px;color:var(--gold)}
+
+/* Lightbox */
+.lb{
+  position:fixed;inset:0;z-index:200;
+  background:rgba(0,0,0,.94);
+  display:none;flex-direction:column;
+  align-items:center;justify-content:center;
+  touch-action:pan-y;
+}
+.lb.open{display:flex}
+.lb-close{
+  position:absolute;top:max(12px,env(safe-area-inset-top));right:14px;
+  z-index:3;width:44px;height:44px;border:0;border-radius:50%;
+  background:rgba(255,255,255,.12);color:#fff;font-size:22px;
+  cursor:pointer;display:flex;align-items:center;justify-content:center;
+}
+.lb-counter{
+  position:absolute;top:max(18px,env(safe-area-inset-top));left:0;right:0;
+  text-align:center;color:rgba(255,255,255,.7);font-size:13px;z-index:2;
+  pointer-events:none;
+}
+.lb-stage{
+  flex:1;width:100%;display:flex;align-items:center;justify-content:center;
+  padding:56px 12px 72px;overflow:hidden;
+}
+.lb-stage img{
+  max-width:100%;max-height:100%;
+  object-fit:contain;
+  user-select:none;-webkit-user-drag:none;
+  transition:transform .2s ease;
+}
+.lb-nav{
+  position:absolute;bottom:max(20px,env(safe-area-inset-bottom));
+  left:0;right:0;display:flex;justify-content:center;gap:16px;z-index:3;
+}
+.lb-nav button{
+  width:48px;height:48px;border-radius:50%;border:1px solid rgba(255,255,255,.25);
+  background:rgba(255,255,255,.1);color:#fff;font-size:20px;cursor:pointer;
+}
+.lb-hint{
+  position:absolute;bottom:max(76px,calc(env(safe-area-inset-bottom)+56px));
+  left:0;right:0;text-align:center;
+  color:rgba(255,255,255,.4);font-size:12px;pointer-events:none;
+}
 
 @media(min-width:480px){
   :root{--pad:20px}
   .order .cta-row{flex-direction:row;justify-content:center}
   .order .cta-row a{flex:0 1 auto;min-width:120px;padding:0 16px}
-  .gallery{display:grid;grid-template-columns:1fr 1fr}
+  .gallery{grid-template-columns:repeat(3,1fr)}
+  .gallery-item:first-child{grid-column:auto;aspect-ratio:1}
 }
 @media(min-width:720px){
-  .hero-inner{
-    display:grid;grid-template-columns:1fr 1fr;
-    align-items:center;max-width:960px;margin:0 auto;
-  }
-  .hero-video video{max-height:none}
-  .hero-text{padding:40px 28px}
-  .product-inner{
-    display:grid;grid-template-columns:1fr 1fr;gap:24px;align-items:center;
-  }
+  .hero{min-height:85vh}
+  .hero-text{padding:48px 32px 56px;max-width:560px}
+  .hero h1{font-size:3rem}
+  .product-inner{display:grid;grid-template-columns:1fr 1.1fr;gap:28px;align-items:center}
+  .product-photo{margin-bottom:0;max-width:360px}
   .grid2{grid-template-columns:repeat(4,1fr)}
-  .gallery{grid-template-columns:repeat(3,1fr)}
   .order{max-width:420px;margin:0 auto}
-  section{padding:44px 24px}
+  section{padding:48px 24px}
   .wrap{max-width:960px}
 }
 </style>
@@ -207,20 +260,17 @@ footer .logo{display:inline-block;margin-bottom:6px}
 </header>
 
 <section class="hero">
-  <div class="hero-inner">
-    <div class="hero-video">
-      <video autoplay muted loop playsinline poster="assets/jar-poster.jpg">
-        <source src="assets/jar-small.mp4" type="video/mp4">
-      </video>
-    </div>
-    <div class="hero-text">
-      <p class="eyebrow">Кисловодск · Кавказ · 1800+ м</p>
-      <h1>Настоящий мёд<br>с <em>высоты гор</em></h1>
-      <p class="lead">Нектар диких трав у подножья Эльбруса. Без сахара. Без добавок.</p>
-      <div class="row-btns">
-        <a href="#product">Продукт</a>
-        <a href="#order">Контакты</a>
-      </div>
+  <div class="hero-bg">
+    <img src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=1600&q=85" alt="Горы Кавказа" width="1600" height="1067" fetchpriority="high">
+  </div>
+  <div class="hero-overlay"></div>
+  <div class="hero-text">
+    <p class="eyebrow">Кисловодск · Кавказ · 1800+ м</p>
+    <h1>Настоящий мёд<br>с <em>высоты гор</em></h1>
+    <p class="lead">Нектар диких трав у подножья Эльбруса. Без сахара. Без добавок.</p>
+    <div class="row-btns">
+      <a href="#product">Продукт</a>
+      <a href="#gallery">Галерея</a>
     </div>
   </div>
 </section>
@@ -230,7 +280,7 @@ footer .logo{display:inline-block;margin-bottom:6px}
     <p class="label">Продукт</p>
     <h2>Мёд диких горных трав</h2>
     <div class="product-inner">
-      <div class="card-media">
+      <div class="product-photo" data-lb="0" role="button" tabindex="0" aria-label="Открыть фото">
         <img src="assets/jar1.jpg" alt="Банка TAU BAL" width="829" height="1280">
       </div>
       <div>
@@ -276,13 +326,20 @@ footer .logo{display:inline-block;margin-bottom:6px}
   </div>
 </section>
 
-<section class="bg2">
+<section class="bg2" id="gallery">
   <div class="wrap">
     <p class="label">Галерея</p>
+    <h2>Фото продукта</h2>
     <div class="gallery">
-      <div class="card-media"><img src="assets/jar1.jpg" alt="Банка TAU BAL" loading="lazy"></div>
-      <div class="card-media"><img src="assets/jar2.jpg" alt="Мёд" loading="lazy"></div>
-      <div class="card-media"><img src="assets/jar3.jpg" alt="Мёд Кавказа" loading="lazy"></div>
+      <div class="gallery-item" data-lb="0" role="button" tabindex="0">
+        <img src="assets/jar1.jpg" alt="Банка TAU BAL" loading="lazy">
+      </div>
+      <div class="gallery-item" data-lb="1" role="button" tabindex="0">
+        <img src="assets/jar2.jpg" alt="Мёд крупным планом" loading="lazy">
+      </div>
+      <div class="gallery-item" data-lb="2" role="button" tabindex="0">
+        <img src="assets/jar3.jpg" alt="Высокогорный мёд" loading="lazy">
+      </div>
     </div>
   </div>
 </section>
@@ -309,5 +366,82 @@ footer .logo{display:inline-block;margin-bottom:6px}
   <p style="margin-top:8px">© 2026</p>
 </footer>
 
+<!-- Lightbox -->
+<div class="lb" id="lb" aria-hidden="true">
+  <button class="lb-close" type="button" id="lbClose" aria-label="Закрыть">×</button>
+  <div class="lb-counter" id="lbCounter">1 / 3</div>
+  <div class="lb-stage" id="lbStage">
+    <img id="lbImg" src="" alt="">
+  </div>
+  <p class="lb-hint">Свайп ← → для листания</p>
+  <div class="lb-nav">
+    <button type="button" id="lbPrev" aria-label="Назад">‹</button>
+    <button type="button" id="lbNext" aria-label="Вперёд">›</button>
+  </div>
+</div>
+
+<script>
+(function(){
+  var photos = [
+    {src:'assets/jar1.jpg', alt:'Банка TAU BAL'},
+    {src:'assets/jar2.jpg', alt:'Мёд крупным планом'},
+    {src:'assets/jar3.jpg', alt:'Высокогорный мёд'}
+  ];
+  var i = 0;
+  var lb = document.getElementById('lb');
+  var img = document.getElementById('lbImg');
+  var counter = document.getElementById('lbCounter');
+  var stage = document.getElementById('lbStage');
+
+  function show(n){
+    i = (n + photos.length) % photos.length;
+    img.src = photos[i].src;
+    img.alt = photos[i].alt;
+    counter.textContent = (i+1) + ' / ' + photos.length;
+  }
+  function open(n){
+    show(n);
+    lb.classList.add('open');
+    lb.setAttribute('aria-hidden','false');
+    document.body.style.overflow = 'hidden';
+  }
+  function close(){
+    lb.classList.remove('open');
+    lb.setAttribute('aria-hidden','true');
+    document.body.style.overflow = '';
+  }
+
+  document.querySelectorAll('[data-lb]').forEach(function(el){
+    el.addEventListener('click', function(){
+      open(parseInt(el.getAttribute('data-lb'),10)||0);
+    });
+  });
+  document.getElementById('lbClose').addEventListener('click', close);
+  document.getElementById('lbPrev').addEventListener('click', function(){ show(i-1); });
+  document.getElementById('lbNext').addEventListener('click', function(){ show(i+1); });
+  lb.addEventListener('click', function(e){
+    if(e.target === lb || e.target === stage) close();
+  });
+  document.addEventListener('keydown', function(e){
+    if(!lb.classList.contains('open')) return;
+    if(e.key === 'Escape') close();
+    if(e.key === 'ArrowLeft') show(i-1);
+    if(e.key === 'ArrowRight') show(i+1);
+  });
+
+  // Swipe
+  var x0 = null;
+  stage.addEventListener('touchstart', function(e){
+    x0 = e.changedTouches[0].clientX;
+  }, {passive:true});
+  stage.addEventListener('touchend', function(e){
+    if(x0 === null) return;
+    var dx = e.changedTouches[0].clientX - x0;
+    x0 = null;
+    if(Math.abs(dx) < 40) return;
+    if(dx < 0) show(i+1); else show(i-1);
+  }, {passive:true});
+})();
+</script>
 </body>
 </html>
