@@ -45,16 +45,13 @@ h1,h2,h3{font-family:"Cormorant Garamond",Georgia,serif;font-weight:500;line-hei
   min-height:42px;display:inline-flex;align-items:center;
 }
 
-/* Верх: горы + короткое видео + текст */
 .hero{
   position:relative;
   padding:20px var(--pad) 28px;
   padding-bottom:32px;
   overflow:hidden;
 }
-.hero-bg{
-  position:absolute;inset:0;z-index:0;
-}
+.hero-bg{position:absolute;inset:0;z-index:0}
 .hero-bg img{
   width:100%;height:100%;
   object-fit:cover;
@@ -73,7 +70,6 @@ h1,h2,h3{font-family:"Cormorant Garamond",Georgia,serif;font-weight:500;line-hei
 .hero h1 em{font-style:italic;color:var(--gold2)}
 .lead{color:rgba(243,235,224,.88);font-size:15px;margin-bottom:16px}
 
-/* 3 сек — цикл, без play */
 .loop-video{
   border-radius:14px;
   overflow:hidden;
@@ -96,7 +92,6 @@ section{padding:28px var(--pad)}
 .label{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);margin-bottom:6px}
 h2{font-size:clamp(1.4rem,5vw,1.9rem);margin-bottom:12px}
 
-/* 15 сек под 3-сек */
 .promo-card{
   border-radius:14px;
   overflow:hidden;
@@ -240,7 +235,6 @@ footer .logo{display:inline-block;margin-bottom:6px;color:var(--gold)}
   <a class="btn-gold" href="https://wa.me/79269344513?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5!%20%D0%A5%D0%BE%D1%87%D1%83%20%D0%B7%D0%B0%D0%BA%D0%B0%D0%B7%D0%B0%D1%82%D1%8C%20%D0%BC%D1%91%D0%B4%20TAU%20BAL" target="_blank" rel="noopener">Заказать</a>
 </header>
 
-<!-- Верх экрана: горы + 3 сек цикл + кратко -->
 <section class="hero">
   <div class="hero-bg">
     <img src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=1920&q=90" alt="Горы" width="1920" height="1280" fetchpriority="high">
@@ -260,12 +254,11 @@ footer .logo{display:inline-block;margin-bottom:6px;color:var(--gold)}
   </div>
 </section>
 
-<!-- 15 сек сразу под 3-сек -->
 <section id="promo" style="padding-top:8px">
   <div class="wrap">
     <div class="promo-card">
-      <video controls playsinline poster="assets/promo-poster.jpg" preload="metadata">
-        <source src="assets/promo-small.mp4" type="video/mp4">
+      <video id="promoVid" controls playsinline poster="assets/promo-poster.jpg" preload="auto">
+        <source src="assets/promo.mp4" type="video/mp4">
       </video>
     </div>
   </div>
@@ -368,6 +361,8 @@ footer .logo{display:inline-block;margin-bottom:6px;color:var(--gold)}
 
 <script>
 (function(){
+  var pv=document.getElementById('promoVid');
+  if(pv){pv.volume=1;pv.muted=false;}
   var photos=[
     {src:'assets/jar1.jpg',alt:'Банка TAU BAL'},
     {src:'assets/jar2.jpg',alt:'Мёд'},
