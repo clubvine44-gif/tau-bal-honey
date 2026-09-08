@@ -14,7 +14,7 @@
   --bg:#0a0908;--bg2:#12100e;--card:#161411;
   --text:#f3ebe0;--muted:#a89a88;
   --gold:#c9a227;--gold-soft:#d4b45a;
-  --line:rgba(243,235,224,.1);--line2:rgba(243,235,224,.18);
+  --line:rgba(243,235,224,.12);
   --pad:16px;
 }
 *{box-sizing:border-box;margin:0;padding:0}
@@ -25,20 +25,29 @@ body{
   line-height:1.55;-webkit-font-smoothing:antialiased;
   overflow-x:hidden;
 }
-img,video{display:block;max-width:100%;height:auto}
+img,video{display:block;max-width:100%}
 a{color:inherit;text-decoration:none}
 h1,h2,h3{font-family:"Cormorant Garamond",Georgia,serif;font-weight:500;line-height:1.2}
 
-/* Splash */
-#splash{position:fixed;inset:0;z-index:100;background:#000;display:flex;align-items:center;justify-content:center;transition:opacity .6s ease,visibility .6s}
+/* Splash — полное видео, текст не обрезается */
+#splash{
+  position:fixed;inset:0;z-index:100;background:#000;
+  display:flex;align-items:center;justify-content:center;
+  transition:opacity .55s ease,visibility .55s;
+}
 #splash.hide{opacity:0;visibility:hidden;pointer-events:none}
-#splash video{width:100%;height:100%;object-fit:cover}
+#splash video{
+  width:100%;height:100%;
+  object-fit:contain; /* весь кадр + текст на видео */
+  background:#000;
+}
 #splash .skip{
-  position:absolute;bottom:max(20px,env(safe-area-inset-bottom));right:16px;z-index:2;
-  background:rgba(0,0,0,.6);border:1px solid rgba(255,255,255,.3);color:#fff;
-  font-size:12px;letter-spacing:.06em;text-transform:uppercase;
-  padding:12px 16px;border-radius:999px;cursor:pointer;
-  min-height:44px;
+  position:absolute;
+  bottom:max(18px,env(safe-area-inset-bottom));
+  right:16px;z-index:2;
+  background:rgba(0,0,0,.65);border:1px solid rgba(255,255,255,.28);
+  color:#fff;font-size:12px;letter-spacing:.06em;text-transform:uppercase;
+  padding:11px 16px;border-radius:999px;cursor:pointer;min-height:44px;
 }
 
 /* Header */
@@ -47,7 +56,7 @@ h1,h2,h3{font-family:"Cormorant Garamond",Georgia,serif;font-weight:500;line-hei
   display:flex;align-items:center;justify-content:space-between;
   padding:12px var(--pad);
   padding-top:max(12px,env(safe-area-inset-top));
-  background:rgba(10,9,8,.94);backdrop-filter:blur(12px);
+  background:rgba(10,9,8,.95);backdrop-filter:blur(12px);
   border-bottom:1px solid var(--line);
 }
 .logo{font-family:"Cormorant Garamond",serif;font-size:1.2rem;letter-spacing:.2em;color:var(--gold)}
@@ -58,62 +67,74 @@ h1,h2,h3{font-family:"Cormorant Garamond",Georgia,serif;font-weight:500;line-hei
   min-height:40px;display:inline-flex;align-items:center;
 }
 
-/* Hero — compact on phone */
+/* Hero */
 .hero{
   position:relative;
-  min-height:72svh;
-  display:flex;flex-direction:column;justify-content:flex-end;
+  min-height:auto;
+  display:flex;flex-direction:column;
+}
+.hero-media{
+  position:relative;
+  width:100%;
+  background:#000;
+  aspect-ratio:9/14;
+  max-height:62vh;
   overflow:hidden;
 }
-.hero-media{position:absolute;inset:0;z-index:0}
-.hero-media video,.hero-media img{width:100%;height:100%;object-fit:cover;object-position:center 40%}
-.hero-overlay{
-  position:absolute;inset:0;z-index:1;
-  background:linear-gradient(to top,rgba(10,9,8,.97) 0%,rgba(10,9,8,.6) 42%,rgba(10,9,8,.2) 100%);
+.hero-media video{
+  width:100%;height:100%;
+  object-fit:contain; /* банка и этикетка целиком */
+  background:#0a0908;
 }
-.hero-content{position:relative;z-index:2;padding:24px var(--pad) 36px}
-.eyebrow{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);margin-bottom:10px}
-.hero h1{font-size:clamp(1.9rem,7.5vw,2.8rem);margin-bottom:12px}
+.hero-content{
+  padding:22px var(--pad) 28px;
+  background:var(--bg);
+}
+.eyebrow{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);margin-bottom:8px}
+.hero h1{font-size:clamp(1.85rem,7vw,2.6rem);margin-bottom:10px}
 .hero h1 em{font-style:italic;color:var(--gold-soft)}
-.hero-lead{color:var(--muted);font-size:.95rem;margin-bottom:20px;max-width:22rem}
-.hero-actions{display:flex;flex-direction:column;gap:10px}
+.hero-lead{color:var(--muted);font-size:.95rem;margin-bottom:18px}
+.hero-actions{display:flex;gap:10px;flex-wrap:wrap}
+.hero-actions .btn{width:auto;flex:1;min-width:0}
 
-/* Buttons — full width on mobile */
+/* Кнопки — не на всю «панель» */
 .btn{
   display:inline-flex;align-items:center;justify-content:center;
-  min-height:48px;padding:0 18px;border-radius:10px;
-  font-weight:600;font-size:15px;width:100%;
+  min-height:46px;padding:0 16px;border-radius:10px;
+  font-weight:600;font-size:14px;
 }
 .btn-wa{background:#25d366;color:#053b1a}
 .btn-tg{background:#2aabee;color:#04263a}
-.btn-ghost{border:1px solid var(--line2);color:var(--text);background:rgba(255,255,255,.04)}
+.btn-ghost{border:1px solid var(--line);color:var(--text);background:transparent}
 
-/* Sections */
-section{padding:40px var(--pad)}
-.section-inner{max-width:960px;margin:0 auto}
+section{padding:36px var(--pad)}
+.section-inner{max-width:720px;margin:0 auto}
 .section-label{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);margin-bottom:8px}
-h2{font-size:clamp(1.55rem,5.5vw,2.2rem);margin-bottom:10px}
+h2{font-size:clamp(1.5rem,5.2vw,2.1rem);margin-bottom:12px}
 
-/* Product — jar fully visible, no crop */
-.product-grid{display:grid;gap:20px;margin-top:20px}
-.product-media{
-  border-radius:14px;overflow:hidden;
+/* Карточки медиа — без обрезки */
+.media-card{
+  border-radius:14px;
+  overflow:hidden;
   border:1px solid var(--line);
   background:#0e0c0a;
-  display:flex;align-items:center;justify-content:center;
+  margin-top:16px;
 }
-.product-media img{
+.media-card video,
+.media-card img{
   width:100%;
   height:auto;
-  max-height:70vh;
+  max-height:none;
   object-fit:contain;
-  object-position:center;
+  vertical-align:middle;
 }
-.product-info h3{font-size:1.35rem;margin-bottom:6px}
-.product-info .price-note{color:var(--muted);font-size:14px;margin-bottom:14px}
-.features{list-style:none;margin-bottom:18px}
+
+.product-info{margin-top:18px}
+.product-info h3{font-size:1.3rem;margin-bottom:6px}
+.price-note{color:var(--muted);font-size:14px;margin-bottom:14px}
+.features{list-style:none;margin-bottom:16px}
 .features li{
-  padding:10px 0;border-bottom:1px solid var(--line);
+  padding:9px 0;border-bottom:1px solid var(--line);
   font-size:14px;display:flex;gap:10px;align-items:flex-start;
 }
 .features li:last-child{border-bottom:0}
@@ -121,75 +142,66 @@ h2{font-size:clamp(1.55rem,5.5vw,2.2rem);margin-bottom:10px}
   content:"";width:6px;height:6px;border-radius:50%;
   background:var(--gold);margin-top:7px;flex-shrink:0;
 }
-.product-actions{display:flex;flex-direction:column;gap:10px}
+.product-actions{display:flex;flex-wrap:wrap;gap:8px}
+.product-actions .btn{flex:1;min-width:120px}
 
-/* Story */
 .story{background:var(--bg2)}
-.story-text p{color:var(--muted);margin-bottom:14px;font-size:.98rem}
+.story-text p{color:var(--muted);margin-bottom:12px;font-size:.96rem}
 .quote{
-  margin:22px 0 0;padding:14px 0 14px 14px;
+  margin:18px 0 0;padding:12px 0 12px 14px;
   border-left:2px solid var(--gold);
   font-family:"Cormorant Garamond",serif;font-style:italic;
-  font-size:1.25rem;color:var(--gold-soft);line-height:1.35;
+  font-size:1.2rem;color:var(--gold-soft);line-height:1.35;
 }
 
-/* Benefits */
-.benefits-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:20px}
+.benefits-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:16px}
 .benefit{
   background:var(--card);border:1px solid var(--line);
-  border-radius:12px;padding:16px 12px;text-align:center;
+  border-radius:12px;padding:14px 10px;text-align:center;
 }
-.benefit strong{display:block;font-family:"Cormorant Garamond",serif;font-size:1.1rem;margin-bottom:4px}
+.benefit strong{display:block;font-family:"Cormorant Garamond",serif;font-size:1.05rem;margin-bottom:4px}
 .benefit span{font-size:12px;color:var(--muted);line-height:1.35}
 
-/* Gallery — full jar visible */
-.gallery-grid{display:grid;grid-template-columns:1fr;gap:12px;margin-top:20px}
-.gallery-grid img{
-  width:100%;height:auto;
-  border-radius:12px;border:1px solid var(--line);
-  background:#0e0c0a;
-  object-fit:contain;
-}
+.gallery-grid{display:grid;grid-template-columns:1fr;gap:12px;margin-top:8px}
+.gallery-grid .media-card{margin-top:0}
 
-/* Order */
 .order-section{background:var(--bg2)}
 .order-box{
   background:var(--card);border:1px solid var(--line);
-  border-radius:16px;padding:28px 18px;text-align:center;
+  border-radius:16px;padding:24px 16px;text-align:center;
 }
 .order-box h2{margin-bottom:8px}
-.order-box p{color:var(--muted);margin-bottom:20px;font-size:15px}
-.order-btns{display:flex;flex-direction:column;gap:10px}
-.phone-line{margin-top:18px;font-size:14px;color:var(--muted)}
+.order-box p{color:var(--muted);margin-bottom:16px;font-size:14px}
+.order-btns{display:flex;flex-direction:column;gap:8px}
+.order-btns .btn{width:100%}
+.phone-line{margin-top:14px;font-size:14px;color:var(--muted)}
 .phone-line a{color:var(--gold);font-weight:600}
 
 footer{
   text-align:center;
-  padding:32px var(--pad) max(40px,env(safe-area-inset-bottom));
+  padding:28px var(--pad) max(36px,env(safe-area-inset-bottom));
   border-top:1px solid var(--line);color:var(--muted);font-size:13px;
 }
-footer .logo{margin-bottom:6px;display:inline-block}
+footer .logo{margin-bottom:6px;display:inline-block;color:var(--gold)}
 
-/* —— Tablet+ —— */
 @media(min-width:480px){
   :root{--pad:20px}
-  .hero-actions{flex-direction:row;flex-wrap:wrap}
-  .btn{width:auto;min-width:140px}
-  .product-actions{flex-direction:row;flex-wrap:wrap}
-  .order-btns{flex-direction:row;justify-content:center;flex-wrap:wrap}
+  .hero-media{aspect-ratio:3/4;max-height:70vh}
   .gallery-grid{grid-template-columns:1fr 1fr}
+  .order-btns{flex-direction:row;justify-content:center;flex-wrap:wrap}
+  .order-btns .btn{width:auto;min-width:130px}
 }
 @media(min-width:720px){
-  .hero{min-height:85vh}
-  .hero-content{padding:40px 24px 56px;max-width:640px}
-  .hero h1{font-size:clamp(2.4rem,5vw,3.4rem)}
-  .hero-lead{font-size:1.05rem}
-  section{padding:56px 24px}
-  .product-grid{grid-template-columns:1fr 1fr;align-items:center;gap:36px}
-  .product-media img{max-height:none}
-  .benefits-grid{grid-template-columns:repeat(4,1fr);gap:14px}
+  .hero{display:grid;grid-template-columns:1fr 1fr;align-items:center;gap:0;min-height:auto}
+  .hero-media{max-height:none;aspect-ratio:3/4;border-radius:0}
+  .hero-content{padding:40px 32px}
+  .hero h1{font-size:2.6rem}
+  section{padding:48px 24px}
+  .product-row{display:grid;grid-template-columns:1fr 1fr;gap:28px;align-items:center}
+  .product-info{margin-top:0}
+  .benefits-grid{grid-template-columns:repeat(4,1fr)}
   .gallery-grid{grid-template-columns:repeat(3,1fr)}
-  .order-box{max-width:480px;margin:0 auto;padding:32px 28px}
+  .order-box{max-width:440px;margin:0 auto;padding:28px 24px}
 }
 @media(prefers-reduced-motion:reduce){
   html{scroll-behavior:auto}
@@ -217,14 +229,13 @@ footer .logo{margin-bottom:6px;display:inline-block}
       <source src="assets/jar-small.mp4" type="video/mp4">
     </video>
   </div>
-  <div class="hero-overlay"></div>
   <div class="hero-content">
     <p class="eyebrow">Кисловодск · Кавказ · 1800+ м</p>
     <h1>Настоящий мёд<br>с <em>высоты гор</em></h1>
     <p class="hero-lead">Нектар диких трав у подножья Эльбруса. Без сахара. Без добавок.</p>
     <div class="hero-actions">
-      <a class="btn btn-wa" href="https://wa.me/79269344513?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5!%20%D0%A5%D0%BE%D1%87%D1%83%20%D0%B7%D0%B0%D0%BA%D0%B0%D0%B7%D0%B0%D1%82%D1%8C%20%D0%BC%D1%91%D0%B4%20TAU%20BAL" target="_blank" rel="noopener">Написать в WhatsApp</a>
       <a class="btn btn-ghost" href="#product">Смотреть продукт</a>
+      <a class="btn btn-ghost" href="#order">Контакты</a>
     </div>
   </div>
 </section>
@@ -233,8 +244,8 @@ footer .logo{margin-bottom:6px;display:inline-block}
   <div class="section-inner">
     <p class="section-label">Продукт</p>
     <h2>Мёд диких горных трав</h2>
-    <div class="product-grid">
-      <div class="product-media">
+    <div class="product-row">
+      <div class="media-card">
         <img src="assets/jar1.jpg" alt="Банка TAU BAL — высокогорный мёд" width="829" height="1280">
       </div>
       <div class="product-info">
@@ -259,7 +270,7 @@ footer .logo{margin-bottom:6px;display:inline-block}
   <div class="section-inner">
     <p class="section-label">О нас</p>
     <h2>Молодой бренд.<br>Старые принципы.</h2>
-    <div class="story-text" style="margin-top:16px">
+    <div class="story-text" style="margin-top:14px">
       <p>TAU BAL только начинается. Нас ведёт наставник с опытом более десяти лет на высокогорных пасеках Кавказа.</p>
       <p>Мы не гонимся за объёмами. Каждый сезон — работа пчёл на диких травах у подножья Эльбруса. Никакого сахара. Никаких добавок.</p>
       <p class="quote">«Золото, рождённое в горах.»</p>
@@ -280,12 +291,13 @@ footer .logo{margin-bottom:6px;display:inline-block}
   </div>
 </section>
 
-<section style="padding-top:0">
+<section style="padding-top:8px">
   <div class="section-inner">
+    <p class="section-label">Галерея</p>
     <div class="gallery-grid">
-      <img src="assets/jar1.jpg" alt="Банка TAU BAL" width="829" height="1280" loading="lazy">
-      <img src="assets/jar2.jpg" alt="Мёд крупным планом" width="600" height="800" loading="lazy">
-      <img src="assets/jar3.jpg" alt="Высокогорный мёд" width="600" height="800" loading="lazy">
+      <div class="media-card"><img src="assets/jar1.jpg" alt="Банка TAU BAL" width="829" height="1280" loading="lazy"></div>
+      <div class="media-card"><img src="assets/jar2.jpg" alt="Мёд крупным планом" width="600" height="800" loading="lazy"></div>
+      <div class="media-card"><img src="assets/jar3.jpg" alt="Высокогорный мёд" width="600" height="800" loading="lazy"></div>
     </div>
   </div>
 </section>
@@ -309,7 +321,7 @@ footer .logo{margin-bottom:6px;display:inline-block}
 <footer>
   <div class="logo">TAU BAL</div>
   <p>Золото, рождённое в горах</p>
-  <p style="margin-top:10px">© 2026 · Высокогорный мёд Кавказа</p>
+  <p style="margin-top:8px">© 2026 · Высокогорный мёд Кавказа</p>
 </footer>
 
 <script>
@@ -318,9 +330,10 @@ footer .logo{margin-bottom:6px;display:inline-block}
   var video=document.getElementById('splashVideo');
   var skip=document.getElementById('skipBtn');
   function hideSplash(){
+    if(!splash)return;
     splash.classList.add('hide');
     try{sessionStorage.setItem('tau_splash_seen','1')}catch(e){}
-    if(video){try{video.pause();video.removeAttribute('src');video.load()}catch(e){}}
+    if(video){try{video.pause()}catch(e){}}
   }
   try{if(sessionStorage.getItem('tau_splash_seen')==='1'){hideSplash();return}}catch(e){}
   if(skip)skip.addEventListener('click',hideSplash);
